@@ -4,6 +4,7 @@ import os
 import json
 import random
 import html
+import re
 
 #indir = '/u/cs401/A1/data/';
 dev_dir = './data/';
@@ -24,7 +25,10 @@ def preproc1( comment , steps=range(1,11)):
     if 2 in steps:
         comment = html.unescape(comment)
     if 3 in steps:
-        print("lol")
+        pattern = r'http\S+'
+        comment=re.sub(pattern,'',comment)
+        pattern=r'www\S+'
+        comment = re.sub(pattern, '', comment)
     if 4 in steps:
         print('TODO')
     if 5 in steps:
