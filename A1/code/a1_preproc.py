@@ -5,6 +5,8 @@ import json
 import random
 import html
 import re
+import string
+import spacy
 
 #indir = '/u/cs401/A1/data/';
 dev_dir = './data/';
@@ -21,16 +23,14 @@ def preproc1( comment , steps=range(1,11)):
 
     modComm = ''
     if 1 in steps:
-        comment = comment.replace("\n", "")
+        comment = remove_newline(comment)
     if 2 in steps:
-        comment = html.unescape(comment)
+        comment = replace_html_code(comment)
     if 3 in steps:
-        pattern = r'http\S+'
-        comment=re.sub(pattern,'',comment)
-        pattern=r'www\S+'
-        comment = re.sub(pattern, '', comment)
+        comment = remove_urls(comment)
     if 4 in steps:
-        print('TODO')
+        punctuation = string.punctuation.replace("\'", "")
+        comment = re.sub('[' + punctuation + ']', '｜', comment)
     if 5 in steps:
         print('TODO')
     if 6 in steps:
@@ -45,6 +45,34 @@ def preproc1( comment , steps=range(1,11)):
         print('TODO')
         
     return modComm
+
+def remove_newline(comment):
+    return comment.replace("\n", "")
+
+def replace_html_code(comment):
+    return html.unescape(comment)
+
+def remove_urls(comment):
+    pattern = r'http\S+'
+    comment = re.sub(pattern, '', comment)
+    pattern = r'www\S+'
+    return re.sub(pattern, '', comment)
+
+def split_punctuatuin(comment):
+    punctuation = string.punctuation.replace("\'", "")
+    comment = re.sub('[' + punctuation + ']', ' ', comment)
+    return comment
+
+def split_clitics(comment):
+    for i in len(comment):
+        if i == "\'":
+            comment = comment[:i] + " " + comment[i:]
+    return comment
+
+
+
+
+
 
 def main( args ):
 
