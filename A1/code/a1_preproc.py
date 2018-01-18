@@ -29,10 +29,9 @@ def preproc1( comment , steps=range(1,11)):
     if 3 in steps:
         comment = remove_urls(comment)
     if 4 in steps:
-        punctuation = string.punctuation.replace("\'", "")
-        comment = re.sub('[' + punctuation + ']', '｜', comment)
+        comment = split_punctuatuin(comment)
     if 5 in steps:
-        print('TODO')
+        pass
     if 6 in steps:
         print('TODO')
     if 7 in steps:
@@ -43,11 +42,12 @@ def preproc1( comment , steps=range(1,11)):
         print('TODO')
     if 10 in steps:
         print('TODO')
-        
+
+    modComm = comment
     return modComm
 
 def remove_newline(comment):
-    return comment.replace("\n", "")
+    return re.sub("\n"," ",comment)
 
 def replace_html_code(comment):
     return html.unescape(comment)
@@ -64,13 +64,24 @@ def split_punctuatuin(comment):
     return comment
 
 def split_clitics(comment):
-    for i in len(comment):
-        if i == "\'":
-            comment = comment[:i] + " " + comment[i:]
+
+    #clitics list will be sub
+    c_list = ['\'s',
+              '\'re',
+              '\'ve',
+              '\'d',
+              '\'t',
+              '\'ll',
+              '\'m',
+              's\'']
+
+    comment = re.sub('\'',' ',comment)
     return comment
 
-
-
+#TODO: AL
+def token_tag(comment):
+    nlp = spacy.load('en', disable=['parse','ner'])
+    utt = nlp(comment)
 
 
 
