@@ -80,8 +80,19 @@ def split_clitics(comment):
 
 #TODO: AL
 def token_tag(comment):
+    modcom = []
     nlp = spacy.load('en', disable=['parse','ner'])
     utt = nlp(comment)
+    for token in utt:
+        modcom = modcom + " " +token.tag_
+    return modcom
+
+
+
+
+
+
+
 
 
 
