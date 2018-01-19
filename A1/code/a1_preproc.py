@@ -9,7 +9,10 @@ import string
 import spacy
 
 #indir = '/u/cs401/A1/data/';
+#sw_path = 'u/cs401/Wordlists/StopWords';
 dev_dir = './data/';
+dev_sw_path ='../Wordlists/StopWords';
+
 def preproc1( comment , steps=range(1,11)):
     ''' This function pre-processes a single comment
 
@@ -33,9 +36,9 @@ def preproc1( comment , steps=range(1,11)):
     if 5 in steps:
         pass
     if 6 in steps:
-        print('TODO')
+        comment = token_tag(comment)
     if 7 in steps:
-        print('TODO')
+        comment = remove_sd(comment)
     if 8 in steps:
         print('TODO')
     if 9 in steps:
@@ -54,9 +57,9 @@ def replace_html_code(comment):
 
 def remove_urls(comment):
     pattern = r'http\S+'
-    comment = re.sub(pattern, '', comment)
+    comment = re.sub(pattern, ' ', comment)
     pattern = r'www\S+'
-    return re.sub(pattern, '', comment)
+    return re.sub(pattern, ' ', comment)
 
 def split_punctuatuin(comment):
     punctuation = string.punctuation.replace("\'", "")
@@ -78,14 +81,24 @@ def split_clitics(comment):
     comment = re.sub('\'',' ',comment)
     return comment
 
-#TODO: AL
 def token_tag(comment):
-    modcom = []
+    modcom = ''
     nlp = spacy.load('en', disable=['parse','ner'])
     utt = nlp(comment)
     for token in utt:
-        modcom = modcom + " " +token.tag_
-    return modcom
+        modcom = modcom + " " +token.text +"/" +token.tag_
+    #AL-first character was space
+    return modcom[1:]
+
+def remove_sd(comment):
+    st_words_file = open(dev_sw_path)
+    st_words = st_words_file.readlines()
+    st_words = [i.replace("\n","") for i in st_words]
+    for wd in st_words:
+        comment = re.sub(r'\b{}(\/\S*\b)?\b'.format(wd),'', comment)
+    return comment
+
+
 
 
 
