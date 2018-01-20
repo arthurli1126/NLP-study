@@ -11,7 +11,7 @@ import spacy
 #indir = '/u/cs401/A1/data/';
 #sw_path = 'u/cs401/Wordlists/StopWords';
 #ab_path = 'u/cs401/Wordlists/abbrev.english';
-dev_dir = './data/';
+dev_dir = '../data/';
 dev_sw_path ='../Wordlists/StopWords';
 dev_ab_path ='../Wordlists/abbrev.english';
 
@@ -92,9 +92,9 @@ def split_punctuation(comment):
 
     #change the period of abbrev to magic=xeq this is bad
     for i in abbrevs:
-        comment = re.sub(r"\b{} ".format(i), i.replace(".","xeq"), comment)
+        comment = re.sub(r"\b{} ".format(i), i.replace(".","xeqxeq"), comment)
 
-    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment).replace("xeq", ".")
+    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment).replace("xeqxeq", ".")
     return comment
 
 
@@ -139,10 +139,11 @@ def remove_sd(comment):
     return comment
 
 def add_newline_eos(comment):
-    return re.sub(r"( )([.])",'\g<1>\g<2>\n', comment)
+    return re.sub(r"(\w)([.])",'\g<1>\g<2>\n', comment)
 
+#this one is little tricky
 def convert_lc(comment):
-    return re.sub(r"(\w)(//\w)",'\g<1>'.lower() + '\g<2>',comment)
+    return re.sub(r"(\b\S+)(/\S+\b)",lambda m: m.group(1).lower() + m.group(2), comment)
 
 
 
@@ -170,7 +171,7 @@ def main( args ):
             start_index = args.ID[0]%len(data)
             print("start index : %s" %start_index)
             data = data[start_index:]
-            data = [data[i] for i in random.sample(range(len(data)),args.max)]
+            data = [data[i] for i in random.sample(range(len(data)),int(args.max))]
             print("new data size %s" %len(data))
             # TODO: read those lines with something like `j = json.loads(line)`
             # TODO: choose to retain fields from those lines that are relevant to you
@@ -182,9 +183,10 @@ def main( args ):
                 j = json.loads(line)
                 d = {key:value for (key, value) in j.items() if key in ('id', 'body')}
                 d["cat"] = file
-                #d["body"] = preproc1(d["body"])
+                d["body"] = preproc1(d["body"])
                 print(d["body"])
-            exit(0)
+                allOutput.append(d)
+
     fout = open(args.output, 'w')
     fout.write(json.dumps(allOutput))
     fout.close()
@@ -198,11 +200,9 @@ if __name__ == "__main__":
     parser.add_argument("--max", help="The maximum number of comments to read from each file", default=10000)
     args = parser.parse_args()
 
-
-    if (args.max > 200272):
+    if (int(args.max) > 200272):
         print("Error: If you want to read more than 200,272 comments per file, you have to read them all.")
         sys.exit(1)
 
-    print(args)
     main(args)
 

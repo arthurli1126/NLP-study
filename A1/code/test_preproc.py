@@ -43,7 +43,7 @@ class A1PreprocTestCase(unittest.TestCase):
         self.assertIsInstance(preproc1('This is a string!', steps=[4]), str)
         self.assertEqual(preproc1('This is a string!', steps=[4]),'This is a string !')
         #self.assertEqual(preproc1('st. louis was nice.', steps=[4]), 'st. louis was ncie .')
-        self.assertEqual(preproc1('sss st. louis was nice.', steps=[4]), 'sss st. louis was ncie .')
+        self.assertEqual(preproc1('sss st. louis was nice.', steps=[4]), 'sss st.louis was nice .')
     def test_step5(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[5]), str)
         pass
@@ -74,11 +74,10 @@ class A1PreprocTestCase(unittest.TestCase):
                          'I/PRP kill/VBD an/DT elephant/NN in/IN my/PRP$ pajama/NNS')
     def test_step9(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[9]), str)
-        pass
+        self.assertEqual(preproc1('This is a string. dsdjs', steps=[9]), "This is a string.\n dsdjs")
     def test_step10(self):
-        self.assertIsInstance(preproc1('This is a string!', steps=[10]), str)
-        self.assertEqual(preproc1('sImpLe TEST', steps=[10]), 'simple test')
-        self.assertEqual(preproc1('FOR GOOD MEASURE', steps=[10]), 'for good measure')
+        self.assertIsInstance(preproc1('This/NNN!', steps=[10]), str)
+        self.assertEqual(preproc1('sImpLe/NN TEST/NN', steps=[10]), 'simple/NN test/NN')
 
 if __name__ == '__main__':
     unittest.main()
