@@ -51,9 +51,9 @@ def preproc1( comment , steps=range(1,11)):
     if 8 in steps:
         comment = modComm_8
     if 9 in steps:
-        pass
+        comment = add_newline_eos(comment)
     if 10 in steps:
-        comment = comment.lower()
+        comment = convert_lc(comment)
 
     modComm = comment
     return modComm
@@ -90,16 +90,16 @@ def split_punctuation(comment):
     abbrevs = [i.replace("\n", "") for i in abbrevs]
     punctuation = re.sub(r"[']",'',string.punctuation)
 
+    #change the period of abbrev to magic=xeq this is bad
     for i in abbrevs:
-        comment = re.sub(r"({})")
+        comment = re.sub(r"\b{} ".format(i), i.replace(".","xeq"), comment)
 
-    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment)
+    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment).replace("xeq", ".")
     return comment
 
 
 def split_clitics(comment):
-
-    #clitics list will be sub
+ #clitics list will be sub
     c_list = ['\'s',
               '\'re',
               '\'ve',
@@ -112,7 +112,6 @@ def split_clitics(comment):
     comment = re.sub('\'',' ',comment)
     return comment
 
-
 '''
 step6&8 spacy support 
 '''
@@ -121,9 +120,11 @@ def spacy_support(comment):
     modcom_8 = ''
     nlp = spacy.load('en', disable=['parse', 'ner'])
     utt = nlp(comment)
+    #to-do AL if token start with - dont lemmanize it
     for token in utt:
         modcom_6 = modcom_6 + " " + token.text + "/" + token.tag_
-        modcom_8 = modcom_8 + " " + token.lemma_ if token.lemma_[0]!='-' else token.text + "/" + token.tag_
+        #modcom_8 = modcom_8 + " " + token.lemma_ + "/" + token.tag_
+        modcom_8 = modcom_8 + " " + (token.lemma_ if token.lemma_[0]!='-' else token.text) + "/" + token.tag_
     # AL-first character was space
     return modcom_6[1:],modcom_8[1:]
 
@@ -131,11 +132,17 @@ def spacy_support(comment):
 def remove_sd(comment):
     st_words_file = open(dev_sw_path)
     st_words = st_words_file.readlines()
-    st_words.close()
+    st_words_file.close()
     st_words = [i.replace("\n","") for i in st_words]
     for wd in st_words:
         comment = re.sub(r'\b{}(\/\S*\b)?\b'.format(wd),'', comment)
     return comment
+
+def add_newline_eos(comment):
+    return re.sub(r"( )([.])",'\g<1>\g<2>\n', comment)
+
+def convert_lc(comment):
+    return re.sub(r"(\w)(//\w)",'\g<1>'.lower() + '\g<2>',comment)
 
 
 
