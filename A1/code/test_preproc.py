@@ -13,7 +13,7 @@ class A1PreprocTestCase(unittest.TestCase):
         self.assertEqual(preproc1('Test\nin\nbetween', steps=[1]),
             'Test in between')
         self.assertEqual(preproc1('\nTest\ntrailing,\nproceeding\n&\nin\nbetween\n',
-            steps=[1]), 'Test trailing, proceeding & in between')
+            steps=[1]), ' Test trailing, proceeding & in between')
     def test_step2(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[2]), str)
         self.assertEqual(preproc1('Simple test: &#33', steps=[2]), 'Simple test: !')
@@ -22,7 +22,7 @@ class A1PreprocTestCase(unittest.TestCase):
     def test_step3(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[3]), str)
         # test wwww.
-        self.assertEqual(preproc1('www', steps=[3]),
+        self.assertEqual(preproc1('www.', steps=[3]),
             ' ')
         # test wwww.
         self.assertEqual(preproc1('I found it here: www.conspiracytheory.net', steps=[3]),
@@ -41,7 +41,8 @@ class A1PreprocTestCase(unittest.TestCase):
             'I found it here: . Also checkout: ')
     def test_step4(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[4]), str)
-        pass
+        self.assertEqual(preproc1('This is a string!', steps=[4]),'This is a string !')
+        self.assertEqual(preproc1('st. louis was nice.', steps=[4]), 'st. louis was ncie .')
     def test_step5(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[5]), str)
         pass

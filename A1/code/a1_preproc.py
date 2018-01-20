@@ -10,8 +10,11 @@ import spacy
 
 #indir = '/u/cs401/A1/data/';
 #sw_path = 'u/cs401/Wordlists/StopWords';
+#ab_path = 'u/cs401/Wordlists/abbrev.english';
 dev_dir = './data/';
 dev_sw_path ='../Wordlists/StopWords';
+dev_ab_path ='../Wordlists/abbrev.english';
+
 
 def preproc1( comment , steps=range(1,11)):
     ''' This function pre-processes a single comment
@@ -25,6 +28,12 @@ def preproc1( comment , steps=range(1,11)):
     '''
 
     modComm = ''
+    modComm_6 = ''
+    modComm_8 = ''
+
+    if 6 or 8 in steps:
+        modComm_6,modComm_8 = spacy_support(comment)
+
     if 1 in steps:
         comment = remove_newline(comment)
     if 2 in steps:
@@ -32,39 +41,61 @@ def preproc1( comment , steps=range(1,11)):
     if 3 in steps:
         comment = remove_urls(comment)
     if 4 in steps:
-        comment = split_punctuatuin(comment)
+        comment = split_punctuation(comment)
     if 5 in steps:
         pass
     if 6 in steps:
-        comment = token_tag(comment)
+        comment = modComm_6
     if 7 in steps:
         comment = remove_sd(comment)
     if 8 in steps:
-        print('TODO')
+        comment = modComm_8
     if 9 in steps:
-        print('TODO')
+        pass
     if 10 in steps:
-        print('TODO')
+        comment = comment.lower()
 
     modComm = comment
     return modComm
 
+'''
+remove new line 
+'''
 def remove_newline(comment):
     return re.sub("\n"," ",comment)
 
+'''
+replace hmtl code with ascii
+'''
 def replace_html_code(comment):
     return html.unescape(comment)
 
+'''
+remove urls
+'''
 def remove_urls(comment):
     pattern = r'http\S+'
     comment = re.sub(pattern, ' ', comment)
     pattern = r'www\S+'
     return re.sub(pattern, ' ', comment)
 
-def split_punctuatuin(comment):
-    punctuation = string.punctuation.replace("\'", "")
-    comment = re.sub('[' + punctuation + ']', ' ', comment)
+
+'''
+split_punctuation
+'''
+def split_punctuation(comment):
+    abbrev_file = open(dev_ab_path)
+    abbrevs = abbrev_file.readlines()
+    abbrev_file.close()
+    abbrevs = [i.replace("\n", "") for i in abbrevs]
+    punctuation = re.sub(r"[']",'',string.punctuation)
+
+    for i in abbrevs:
+        comment = re.sub(r"({})")
+
+    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment)
     return comment
+
 
 def split_clitics(comment):
 
@@ -81,22 +112,31 @@ def split_clitics(comment):
     comment = re.sub('\'',' ',comment)
     return comment
 
-def token_tag(comment):
-    modcom = ''
-    nlp = spacy.load('en', disable=['parse','ner'])
+
+'''
+step6&8 spacy support 
+'''
+def spacy_support(comment):
+    modcom_6 = ''
+    modcom_8 = ''
+    nlp = spacy.load('en', disable=['parse', 'ner'])
     utt = nlp(comment)
     for token in utt:
-        modcom = modcom + " " +token.text +"/" +token.tag_
-    #AL-first character was space
-    return modcom[1:]
+        modcom_6 = modcom_6 + " " + token.text + "/" + token.tag_
+        modcom_8 = modcom_8 + " " + token.lemma_ if token.lemma_[0]!='-' else token.text + "/" + token.tag_
+    # AL-first character was space
+    return modcom_6[1:],modcom_8[1:]
+
 
 def remove_sd(comment):
     st_words_file = open(dev_sw_path)
     st_words = st_words_file.readlines()
+    st_words.close()
     st_words = [i.replace("\n","") for i in st_words]
     for wd in st_words:
         comment = re.sub(r'\b{}(\/\S*\b)?\b'.format(wd),'', comment)
     return comment
+
 
 
 
