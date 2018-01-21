@@ -15,8 +15,21 @@ dev_dir = '../data/';
 dev_sw_path ='../Wordlists/StopWords';
 dev_ab_path ='../Wordlists/abbrev.english';
 
+# load abbrevs file
+abbrev_file = open(dev_ab_path)
+abbrevs = abbrev_file.readlines()
+abbrev_file.close()
+abbrevs = [i.replace("\n", "") for i in abbrevs]
+# load st_words file
+st_words_file = open(dev_sw_path)
+st_words = st_words_file.readlines()
+st_words_file.close()
+st_words = [i.replace("\n", "") for i in st_words]
 
-def preproc1( comment , steps=range(1,11)):
+#create nlp
+nlp = spacy.load('en', disable=['parse', 'ner'])
+
+def preproc1( comment, steps=range(1,11)):
     ''' This function pre-processes a single comment
 
     Parameters:                                                                      
@@ -41,13 +54,13 @@ def preproc1( comment , steps=range(1,11)):
     if 3 in steps:
         comment = remove_urls(comment)
     if 4 in steps:
-        comment = split_punctuation(comment)
+        comment = split_punctuation(comment,abbrevs)
     if 5 in steps:
         pass
     if 6 in steps:
         comment = modComm_6
     if 7 in steps:
-        comment = remove_sd(comment)
+        comment = remove_sd(comment,st_words)
     if 8 in steps:
         comment = modComm_8
     if 9 in steps:
@@ -74,22 +87,18 @@ def replace_html_code(comment):
 remove urls
 '''
 def remove_urls(comment):
-    pattern = r'http\S+'
+    #need to replace it in the future
+    pattern = re.compile(r'(http.+|www.+)')
     comment = re.sub(pattern, ' ', comment)
-    pattern = r'www\S+'
-    return re.sub(pattern, ' ', comment)
+    return comment
 
 
 '''
 split_punctuation
 '''
-def split_punctuation(comment):
-    abbrev_file = open(dev_ab_path)
-    abbrevs = abbrev_file.readlines()
-    abbrev_file.close()
-    abbrevs = [i.replace("\n", "") for i in abbrevs]
-    punctuation = re.sub(r"[']",'',string.punctuation)
+def split_punctuation(comment,abbrevs):
 
+    punctuation = re.sub(r"[']",'',string.punctuation)
     #change the period of abbrev to magic=xeq this is bad
     for i in abbrevs:
         comment = re.sub(r"\b{} ".format(i), i.replace(".","xeqxeq"), comment)
@@ -118,7 +127,6 @@ step6&8 spacy support
 def spacy_support(comment):
     modcom_6 = ''
     modcom_8 = ''
-    nlp = spacy.load('en', disable=['parse', 'ner'])
     utt = nlp(comment)
     #to-do AL if token start with - dont lemmanize it
     for token in utt:
@@ -129,11 +137,7 @@ def spacy_support(comment):
     return modcom_6[1:],modcom_8[1:]
 
 
-def remove_sd(comment):
-    st_words_file = open(dev_sw_path)
-    st_words = st_words_file.readlines()
-    st_words_file.close()
-    st_words = [i.replace("\n","") for i in st_words]
+def remove_sd(comment, st_words):
     for wd in st_words:
         comment = re.sub(r'\b{}(\/\S*\b)?\b'.format(wd),'', comment)
     return comment
@@ -147,19 +151,14 @@ def convert_lc(comment):
 
 
 
-
-
-
-
-
-
-
-
-
-
-def main( args ):
+def main(args):
 
     allOutput = []
+
+
+
+
+
     for subdir, dirs, files in os.walk(dev_dir):
         for file in files:
             fullFile = os.path.join(subdir, file)
@@ -184,7 +183,6 @@ def main( args ):
                 d = {key:value for (key, value) in j.items() if key in ('id', 'body')}
                 d["cat"] = file
                 d["body"] = preproc1(d["body"])
-                print(d["body"])
                 allOutput.append(d)
 
     fout = open(args.output, 'w')

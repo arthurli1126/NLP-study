@@ -4,6 +4,18 @@ import argparse
 import os
 import json
 
+#fp_path = '/u/cs401/Wordlists/First-person'
+dev_fp_path = '../Wordlists/First-person'
+fp_file = open(dev_fp_path)
+fp = fp_file.readlines()
+fp = [i.replace("\n","") for i in fp]
+#sp_path = '/u/cs401/Wordlists/Second-person'
+dev_sp_path = '../Wordlists/Second-person'
+sp_file = open(dev_sp_path)
+sp = sp_file.readlines()
+sp = [i.replace("\n","") for i in sp]
+
+
 
 def extract1( comment ):
     ''' This function extracts features from a single comment
@@ -14,8 +26,18 @@ def extract1( comment ):
     Returns:
         feats : numpy Array, a 173-length vector of floating point features
     '''
-    print('TODO')
-    # TODO: your code here
+    feats = np.zeros(173)
+    comment = comment.split(" ")
+    for i in comment:
+        if i in fp:
+            feats[1] +=1
+            continue
+        if i in sp:
+            feats[2] +=1
+            continue
+    return feats
+
+
 
 def main( args ):
 
