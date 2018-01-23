@@ -14,6 +14,11 @@ dev_sp_path = '../Wordlists/Second-person'
 sp_file = open(dev_sp_path)
 sp = sp_file.readlines()
 sp = [i.replace("\n","") for i in sp]
+#Tp_path = '/u/cs401/Wordlists/Third-person'
+dev_tp_path = '../Wordlists/Third-person'
+tp_file = open(dev_tp_path)
+tp = tp_file.readlines()
+tp = [i.replace("\n","") for i in tp]
 
 
 
@@ -35,6 +40,10 @@ def extract1( comment ):
         if i in sp:
             feats[2] +=1
             continue
+        if i in tp:
+            feats[3] +=1
+
+
     return feats
 
 
@@ -45,7 +54,6 @@ def main( args ):
     feats = np.zeros( (len(data), 173+1))
 
     # TODO: your code here
-
     np.savez_compressed( args.output, feats)
 
     
