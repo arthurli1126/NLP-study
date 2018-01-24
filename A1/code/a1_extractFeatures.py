@@ -4,6 +4,7 @@ import argparse
 import os
 import json
 import string
+import csv
 
 '''
 Load supported file
@@ -28,12 +29,20 @@ dev_slang_path = '../Wordlists/Slang'
 slang_file = open(dev_slang_path)
 slang = slang_file.readlines()
 slang = [i.replace("\n","") for i in slang]
-
 #slang_path = '/u/cs401/Wordlists/Slang'
 dev_slang_path = '../Wordlists/Slang'
 slang_file = open(dev_slang_path)
 slang = slang_file.readlines()
 slang = [i.replace("\n","") for i in slang]
+#BNG_path = '/u/cs401/Wordlists/BristolNorms+GilhoolyLogie.csv'
+dev_BNG_path = '../Wordlists/BristolNorms+GilhoolyLogie.csv'
+BNG_file = csv.reader(open(dev_slang_path))
+BNG = np.array([row for row in BNG_file][1:])
+#RW_path = '/u/cs401/Wordlists/Ratings_Warriner_et_al.csv'
+dev_RW_path = '../Wordlists/Ratings_Warriner_et_al.csv'
+RW_file = csv.reader(open(dev_RW_path))
+RW = np.array([row for row in RW_file][1:])
+
 
 
 #some helpful tags for future regex
@@ -59,6 +68,7 @@ def extract1( comment ):
     len_comment = 0.0
     no_of_token = 0.0
     no_of_sen = 0.0
+    AoA = []
 
 
     for i in comment:
@@ -70,7 +80,7 @@ def extract1( comment ):
             continue
 
         #need to think a better way but should be enough for now
-        if fp+'/PRP' in i or fp+'/PRP$':
+        if any(j +'/PRP' in i for j in fp) or any(k +'/PRP$' in i for k in fp):
             feats[0] +=1
             continue
         if sp in i:
@@ -106,40 +116,15 @@ def extract1( comment ):
             feats[12] +=1
         if len(i.split('/')[0])>=3 and i.split('/')[0].isupper():
             feats[13] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-        if any(pn in i for pn in proper_nouns):
-            feats[9] +=1
-
 
     #average length of sentence,tokens
-    feats[14] = no_of_token/no_of_sen
-    feats[15] = len_comment/no_of_token
+    feats[14] = no_of_token/(no_of_sen if no_of_sen != 0 else 1)
+    feats[15] = len_comment/(no_of_token if no_of_token != 0 else 1)
     feats[16] = no_of_sen
+
+    #norm: average, sd
+
+
 
 
 
