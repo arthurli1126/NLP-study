@@ -80,22 +80,25 @@ def extract1( comment ):
             continue
 
         #need to think a better way but should be enough for now
-        if any(j +'/PRP' in i for j in fp) or any(k +'/PRP$' in i for k in fp):
+        if any(j +'/PRP' in i for j in fp) \
+                or any(k +'/PRP$' in i for k in fp):
             feats[0] +=1
             continue
-        if sp in i:
+        if any(j + '/PRP' in i for j in sp) \
+                or any(k + '/PRP$' in i for k in sp):
             feats[1] +=1
             continue
-        if tp in i :
+        if any(j + '/PRP' in i for j in tp) \
+                or any(k + '/PRP$' in i for k in tp):
             feats[2] +=1
             continue
-        if i.find('/CC'):
+        if '/CC' in i:
             feats[3] +=1
             continue
-        if i.find('/VBD'):
+        if '/VBD' in i:
             feats[4] +=1
             continue
-        if i.find('/VBG'):
+        if '/VBG' in i:
             feats[5] +=1
             continue
         if i == ',/,':
