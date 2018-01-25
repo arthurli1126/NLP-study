@@ -73,10 +73,14 @@ def extract1( comment ):
 
     for i in comment:
         #some feature need to calculate regardless of words
-        len_comment += len(i)
-        no_of_token +=1
-        if '.\n' in i:
+        len_comment += len(i.split('/')[0])
+
+        no_of_token += 1
+
+        if './.' in i:
             no_of_sen += 1
+            no_of_token -= 1
+            #todo: AL need to rethink about it when have time
             continue
 
         #need to think a better way but should be enough for now
@@ -98,14 +102,16 @@ def extract1( comment ):
         if '/VBD' in i:
             feats[4] +=1
             continue
+        #TODO AL: need consider this kinda of stuff will/shall/going to/gonna/'ll
         if '/VBG' in i:
             feats[5] +=1
             continue
         if i == ',/,':
             feats[6] +=1
             continue
-        if i[0] in string.punctuation and i[1] in string.punctuation:
+        if i[0] in string.punctuation and i[1] in string.punctuation and len(i) >3:
             feats[7] +=1
+            no_of_token -=1
             continue
         if any(n in i for n in common_nouns):
             feats[8] +=1

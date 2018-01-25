@@ -60,13 +60,80 @@ class test_extrac(unittest.TestCase):
         self.assertEqual(extract1(comment)[6], result[6])
 
     def test_multi_punctua(self):
-        comment = ',! %%'
+        comment = ',!/! %%/%'
         result = np.zeros(173)
         result[7] = 2.0
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[7], result[7])
 
+    def test_common_nouns(self):
+        comment = 'dsd/NN dsdsd/NNS'
+        result = np.zeros(173)
+        result[8] = 2.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[8], result[8])
 
+    def test_proper_nouns(self):
+        comment = 'dsd/NNP dsdsd/NNPS'
+        result = np.zeros(173)
+        result[9] = 2.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[9], result[9])
+
+
+    def test_advs(self):
+        comment = 'dsd/RB dsdsd/RBR sdjs/RBS'
+        result = np.zeros(173)
+        result[10] = 3.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[10], result[10])
+
+    def test_wh_words(self):
+        comment = 'dsd/WDT dsdsd/WP dsjdk/WP$ dsd/WRB'
+        result = np.zeros(173)
+        result[11] = 4.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[11], result[11])
+
+    def test_slang(self):
+        comment = 'smh fwb lmfao lmao lms tbh rofl wtf bff b bff'
+        result = np.zeros(173)
+        result[12] = 11.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[12], result[12])
+
+    def test_upper(self):
+        comment = 'SDSD DDSDS DSDSD DSDSW WDW tbh rofl wtf bff b bff'
+        result = np.zeros(173)
+        result[13] = 5.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[13], result[13])
+
+    def test_avg_sen_len(self):
+        comment = 'dsd/WDT dsdsd/WP hhjh/WP Dsss/wwww ./. dsjdk/WP$ dsd/WRB ./.'
+        result = np.zeros(173)
+        result[14] = 4.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[14], result[14])
+
+
+    def test_avg_tk_len(self):
+        comment = 'dsd/WDT dsdsdsd/WP ./. dsjdks/WP$ dsd/WRB ./.'
+        result = np.zeros(173)
+        result[15] = 3.5
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[15], result[15])
+
+    def test_avg_tk_len(self):
+        comment = 'dsd/WDT dsdsdsd/WP ./. dsjdks/WP$ dsd/WRB ./.'
+        result = np.zeros(173)
+        result[15] = 3.5
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[15], result[15])
+
+
+
+    
 
 
 
