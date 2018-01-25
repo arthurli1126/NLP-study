@@ -120,16 +120,61 @@ class test_extrac(unittest.TestCase):
     def test_avg_tk_len(self):
         comment = 'dsd/WDT dsdsdsd/WP ./. dsjdks/WP$ dsd/WRB ./.'
         result = np.zeros(173)
-        result[15] = 3.5
+        result[15] = 4.75
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[15], result[15])
 
-    def test_avg_tk_len(self):
+    def test_no_of_sentence(self):
         comment = 'dsd/WDT dsdsdsd/WP ./. dsjdks/WP$ dsd/WRB ./.'
         result = np.zeros(173)
-        result[15] = 3.5
+        result[16] = 2.0
         self.assertIsInstance(extract1(comment), np.ndarray)
-        self.assertEqual(extract1(comment)[15], result[15])
+        self.assertEqual(extract1(comment)[16], result[16])
+
+    def test_avg_aoa(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[17] = 506.5
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[17], result[17])
+
+
+    def test_avg_img(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[18] = 367.5
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[18], result[18])
+
+    def test_avg_fam(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[19] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[19], result[19])
+
+    def test_std_aoa(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[20] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[20], result[20])
+
+    def test_std_img(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[21] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[21], result[21])
+
+    def test_std_fam(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[22] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[22], result[22])
+
+
 
 
 

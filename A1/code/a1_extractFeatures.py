@@ -68,9 +68,10 @@ def extract1( comment ):
     len_comment = 0.0
     no_of_token = 0.0
     no_of_sen = 0.0
+    no_of_pun = 0.0
     AoA = []
 
-
+    #TODO need to use regex seems like
     for i in comment:
         #some feature need to calculate regardless of words
         len_comment += len(i.split('/')[0])
@@ -79,7 +80,8 @@ def extract1( comment ):
 
         if './.' in i:
             no_of_sen += 1
-            no_of_token -= 1
+            no_of_pun +=1
+            len_comment -= len(i.split('/')[0])
             #todo: AL need to rethink about it when have time
             continue
 
@@ -111,7 +113,8 @@ def extract1( comment ):
             continue
         if i[0] in string.punctuation and i[1] in string.punctuation and len(i) >3:
             feats[7] +=1
-            no_of_token -=1
+            no_of_pun += 1
+            len_comment -= len(i.split('/')[0])
             continue
         if any(n in i for n in common_nouns):
             feats[8] +=1
@@ -128,7 +131,9 @@ def extract1( comment ):
 
     #average length of sentence,tokens
     feats[14] = no_of_token/(no_of_sen if no_of_sen != 0 else 1)
-    feats[15] = len_comment/(no_of_token if no_of_token != 0 else 1)
+    feats[15] = len_comment/\
+                ((no_of_token-no_of_pun if no_of_token != 0 else 1)
+                 if len_comment>0 else 1)
     feats[16] = no_of_sen
 
     #norm: average, sd
