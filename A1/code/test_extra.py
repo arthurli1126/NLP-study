@@ -174,13 +174,49 @@ class test_extrac(unittest.TestCase):
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[22], result[22])
 
+    def test_avg_vmean(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[23] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[23], result[23])
 
 
+    def test_avg_amean(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[24] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[24], result[24])
+
+    def test_avg_dmean(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[25] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[25], result[25])
+
+    def test_std_vmean(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[26] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[23], result[23])
 
 
-    
+    def test_std_amean(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[27] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[24], result[24])
 
-
+    def test_std_dmean(self):
+        comment = 'abbey abide'
+        result = np.zeros(173)
+        result[28] = 413.0
+        self.assertIsInstance(extract1(comment), np.ndarray)
+        self.assertEqual(extract1(comment)[25], result[25])
 
 
 if __name__ == '__main__':
