@@ -36,13 +36,14 @@ slang = slang_file.readlines()
 slang = [i.replace("\n","") for i in slang]
 #BNG_path = '/u/cs401/Wordlists/BristolNorms+GilhoolyLogie.csv'
 dev_BNG_path = '../Wordlists/BristolNorms+GilhoolyLogie.csv'
-BNG_file = csv.reader(open(dev_slang_path))
+BNG_file = csv.reader(open(dev_BNG_path))
 BNG = np.array([row for row in BNG_file][1:])
+bng_dict= dict(zip(BNG[:,1],BNG[:,3:6]))
 #RW_path = '/u/cs401/Wordlists/Ratings_Warriner_et_al.csv'
 dev_RW_path = '../Wordlists/Ratings_Warriner_et_al.csv'
 RW_file = csv.reader(open(dev_RW_path))
 RW = np.array([row for row in RW_file][1:])
-
+rw_dict= dict(zip(RW[:,1],RW[:,[2,5,8]]))
 
 
 #some helpful tags for future regex
@@ -69,14 +70,30 @@ def extract1( comment ):
     no_of_token = 0.0
     no_of_sen = 0.0
     no_of_pun = 0.0
-    AoA = []
+    aoa = []
+    img = []
+    fam = []
+    vmean = []
+    amean = []
+    dmean = []
+
+
 
     #TODO need to use regex seems like
     for i in comment:
         #some feature need to calculate regardless of words
         len_comment += len(i.split('/')[0])
-
         no_of_token += 1
+        #Todo just figured need to spit word anyways might need to change it in the future
+        word = i.split('/')[0]
+        #place holder incase key not found
+        pl = [0,0,0]
+        aoa.append(float(bng_dict.get(word,pl)[0]))
+        img.append(float(bng_dict.get(word,pl)[1]))
+        fam.append(float(bng_dict.get(word, pl)[2]))
+        vmean.append(float(rw_dict.get(word,pl)[0]))
+        amean.append(float(rw_dict.get(word,pl)[1]))
+        dmean.append(float(rw_dict.get(word,pl)[2]))
 
         if './.' in i:
             no_of_sen += 1
@@ -110,6 +127,7 @@ def extract1( comment ):
             continue
         if i == ',/,':
             feats[6] +=1
+            len_comment -= len(i.split('/')[0])
             continue
         if i[0] in string.punctuation and i[1] in string.punctuation and len(i) >3:
             feats[7] +=1
@@ -135,8 +153,23 @@ def extract1( comment ):
                 ((no_of_token-no_of_pun if no_of_token != 0 else 1)
                  if len_comment>0 else 1)
     feats[16] = no_of_sen
+    feats[17] = np.mean(aoa)
+    feats[18] = np.mean(img)
+    feats[19] = np.mean(fam)
+    feats[20] = np.std(aoa)
+    feats[21] = np.std(img)
+    feats[22] = np.std(fam)
+
+    feats[23] = np.mean(vmean)
+    feats[24] = np.mean(amean)
+    feats[25] = np.mean(dmean)
+    feats[26] = np.std(vmean)
+    feats[27] = np.std(amean)
+    feats[28] = np.std(dmean)
+
 
     #norm: average, sd
+
 
 
 

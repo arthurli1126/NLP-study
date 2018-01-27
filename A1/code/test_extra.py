@@ -156,28 +156,28 @@ class test_extrac(unittest.TestCase):
     def test_std_aoa(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[20] = 413.0
+        result[20] = 26.5
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[20], result[20])
 
     def test_std_img(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[21] = 413.0
+        result[21] = 207.5
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[21], result[21])
 
     def test_std_fam(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[22] = 413.0
+        result[22] = 16.0
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[22], result[22])
 
     def test_avg_vmean(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[23] = 413.0
+        result[23] = 5.6849999999999996
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[23], result[23])
 
@@ -185,38 +185,38 @@ class test_extrac(unittest.TestCase):
     def test_avg_amean(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[24] = 413.0
+        result[24] = 2.73
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[24], result[24])
 
     def test_avg_dmean(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[25] = 413.0
+        result[25] = 5.165
         self.assertIsInstance(extract1(comment), np.ndarray)
         self.assertEqual(extract1(comment)[25], result[25])
 
     def test_std_vmean(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[26] = 413.0
+        result[26] =  0.16500000000000004
         self.assertIsInstance(extract1(comment), np.ndarray)
-        self.assertEqual(extract1(comment)[23], result[23])
+        self.assertEqual(extract1(comment)[26], result[26])
 
 
     def test_std_amean(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[27] = 413.0
+        result[27] = 0.5299999999999998
         self.assertIsInstance(extract1(comment), np.ndarray)
-        self.assertEqual(extract1(comment)[24], result[24])
+        self.assertEqual(extract1(comment)[27], result[27])
 
     def test_std_dmean(self):
         comment = 'abbey abide'
         result = np.zeros(173)
-        result[28] = 413.0
+        result[28] = 0.16500000000000004
         self.assertIsInstance(extract1(comment), np.ndarray)
-        self.assertEqual(extract1(comment)[25], result[25])
+        self.assertEqual(extract1(comment)[28], result[28])
 
 
 if __name__ == '__main__':
