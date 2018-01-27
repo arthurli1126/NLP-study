@@ -29,11 +29,6 @@ dev_slang_path = '../Wordlists/Slang'
 slang_file = open(dev_slang_path)
 slang = slang_file.readlines()
 slang = [i.replace("\n","") for i in slang]
-#slang_path = '/u/cs401/Wordlists/Slang'
-dev_slang_path = '../Wordlists/Slang'
-slang_file = open(dev_slang_path)
-slang = slang_file.readlines()
-slang = [i.replace("\n","") for i in slang]
 #BNG_path = '/u/cs401/Wordlists/BristolNorms+GilhoolyLogie.csv'
 dev_BNG_path = '../Wordlists/BristolNorms+GilhoolyLogie.csv'
 BNG_file = csv.reader(open(dev_BNG_path))
@@ -147,7 +142,7 @@ def extract1( comment ):
         if len(i.split('/')[0])>=3 and i.split('/')[0].isupper():
             feats[13] +=1
 
-    #average length of sentence,tokens
+    #average/std length of sentence,tokens, norms
     feats[14] = no_of_token/(no_of_sen if no_of_sen != 0 else 1)
     feats[15] = len_comment/\
                 ((no_of_token-no_of_pun if no_of_token != 0 else 1)
@@ -167,15 +162,56 @@ def extract1( comment ):
     feats[27] = np.std(amean)
     feats[28] = np.std(dmean)
 
-
-    #norm: average, sd
-
-
-
-
-
-
     return feats
+
+
+def liwc():
+    #feats_path = '/u/cs401/feats/feats.txt'
+    dev_feats_path = '../feats'
+    aid_index=[]
+    cid_index=[]
+    lid_index=[]
+    rid_index=[]
+    feats= []
+    alt_feats = np.array([])
+    center_feats = np.array([])
+    left_feats = np.array([])
+    right_feats = np.array([])
+
+    for subdir,dir,files in os.walk(dev_feats_path):
+        for file in files:
+            if 'txt' in file:
+                full_file = open(os.path.join(subdir,file)).readlines()
+                full_file = [i.replace("\n", "") for i in full_file]
+                if 'Alt' in file:
+                    aid_index = full_file
+                if 'Center' in file:
+                    cid_index = full_file
+                if 'Left' in file:
+                    lid_index = full_file
+                if 'Right' in file:
+                    rid_index = full_file
+                if 'feats' in file:
+                    feats = full_file
+            if 'npy' in file:
+                temp_feats = np.load(os.path.join(subdir,file))
+                if 'Alt' in file:
+                    alt_feats = temp_feats
+                if 'Center' in file:
+                    center_feats = temp_feats
+                if 'Left' in file:
+                    left_feats = temp_feats
+                if 'Right' in file:
+                    right_feats = temp_feats
+        return aid_index, cid_index, lid_index, rid_index, feats, alt_feats, center_feats, left_feats, right_feats
+
+
+
+
+
+
+
+
 
 
 
@@ -185,6 +221,11 @@ def main( args ):
     feats = np.zeros( (len(data), 173+1))
 
     # TODO: your code here
+    #for i in data:
+
+
+
+
     np.savez_compressed( args.output, feats)
 
     
