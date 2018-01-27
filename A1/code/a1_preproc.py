@@ -29,7 +29,7 @@ st_words = [i.replace("\n", "") for i in st_words]
 #create nlp
 nlp = spacy.load('en', disable=['parse', 'ner'])
 
-def preproc1( comment, steps=range(1,11)):
+def preproc1(comment, steps=range(1,11)):
     ''' This function pre-processes a single comment
 
     Parameters:                                                                      
@@ -44,8 +44,6 @@ def preproc1( comment, steps=range(1,11)):
     modComm_6 = ''
     modComm_8 = ''
 
-    if 6 or 8 in steps:
-        modComm_6,modComm_8 = spacy_support(comment)
 
     if 1 in steps:
         comment = remove_newline(comment)
@@ -58,15 +56,21 @@ def preproc1( comment, steps=range(1,11)):
     if 5 in steps:
         pass
     if 6 in steps:
+        modComm_6, modComm_8 = spacy_support(comment)
         comment = modComm_6
     if 7 in steps:
         comment = remove_sd(comment,st_words)
     if 8 in steps:
-        comment = modComm_8
+        if 6 in steps:
+            comment = modComm_8
+        else:
+            modComm_6, modComm_8 = spacy_support(comment)
+            comment = modComm_8
     if 9 in steps:
         comment = add_newline_eos(comment)
     if 10 in steps:
         comment = convert_lc(comment)
+
 
     modComm = comment
     return modComm
@@ -88,8 +92,12 @@ remove urls
 '''
 def remove_urls(comment):
     #need to replace it in the future
-    pattern = re.compile(r'(http.+|www.+)')
-    comment = re.sub(pattern, ' ', comment)
+    # if 'http' in comment:
+    #     print('before:%s' %comment)
+    pattern = re.compile(r'(http[^\s]*|www[^\s]*)')
+    comment = re.sub(pattern,'', comment)
+    # if 'http' in comment:
+    #     print('after:%s' % comment)
     return comment
 
 
@@ -104,6 +112,7 @@ def split_punctuation(comment,abbrevs):
         comment = re.sub(r"\b{} ".format(i), i.replace(".","xeqxeq"), comment)
 
     comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment).replace("xeqxeq", ".")
+    comment = re.sub(r"\s+",' ',comment)
     return comment
 
 

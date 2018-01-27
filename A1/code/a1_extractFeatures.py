@@ -59,7 +59,7 @@ def extract1( comment ):
         feats : numpy Array, a 173-length vector of floating point features
     '''
 
-    feats = np.zeros(173)
+    feats = np.zeros(174)
     comment = comment.split(" ")
     len_comment = 0.0
     no_of_token = 0.0
@@ -76,19 +76,29 @@ def extract1( comment ):
 
     #TODO need to use regex seems like
     for i in comment:
+
+        if len(i) <2:
+            continue
         #some feature need to calculate regardless of words
         len_comment += len(i.split('/')[0])
         no_of_token += 1
         #Todo just figured need to spit word anyways might need to change it in the future
         word = i.split('/')[0]
         #place holder incase key not found
-        pl = [0,0,0]
-        aoa.append(float(bng_dict.get(word,pl)[0]))
-        img.append(float(bng_dict.get(word,pl)[1]))
-        fam.append(float(bng_dict.get(word, pl)[2]))
-        vmean.append(float(rw_dict.get(word,pl)[0]))
-        amean.append(float(rw_dict.get(word,pl)[1]))
-        dmean.append(float(rw_dict.get(word,pl)[2]))
+        bng_norm = bng_dict.get(word,'')
+        rw_norm = rw_dict.get(word, '')
+
+        print(word)
+        print(bng_norm)
+        print(rw_norm)
+        if '' not in bng_norm:
+            aoa.append(float(bng_norm[0]))
+            img.append(float(bng_norm[1]))
+            fam.append(float(bng_norm[2]))
+        if '' not in rw_norm:
+            vmean.append(float(rw_norm[0]))
+            amean.append(float(rw_norm[1]))
+            dmean.append(float(rw_norm[2]))
 
         if './.' in i:
             no_of_sen += 1
@@ -203,15 +213,13 @@ def liwc():
                     left_feats = temp_feats
                 if 'Right' in file:
                     right_feats = temp_feats
-        return aid_index, cid_index, lid_index, rid_index, feats, alt_feats, center_feats, left_feats, right_feats
+        return aid_index, cid_index, lid_index, rid_index,\
+               feats, alt_feats, center_feats, left_feats, right_feats
 
 
-
-
-
-
-
-
+def find_liwc_feats(id,ids,features):
+    id_index = ids.index(id)
+    return features[id_index]
 
 
 
@@ -219,14 +227,32 @@ def main( args ):
 
     data = json.load(open(args.input))
     feats = np.zeros( (len(data), 173+1))
-
+    cat_mapping = {
+        'Left':0,
+        'Center':1,
+        'Right':2,
+        'Alt':3
+    }
     # TODO: your code here
-    #for i in data:
+    aid_index, cid_index, lid_index, rid_index, \
+    feats_id, alt_feats, center_feats, left_feats, right_feats = liwc()
+    data_index = 0
+    for i in data:
+        print("Processing comment: %s" %i['body'])
+        feats_ex = extract1(i['body'])
+        feats_ex[173] = cat_mapping.get(i['cat']," ")
+        if i['cat'] == 'Alt':
+            feats_ex[29:173] = find_liwc_feats(i['id'], aid_index, alt_feats)
+        if i['cat'] == 'Center':
+            feats_ex[29:173] = find_liwc_feats(i['id'], cid_index, center_feats)
+        if i['cat'] == 'Left':
+            feats_ex[29:173] = find_liwc_feats(i['id'], lid_index, left_feats)
+        if i['cat'] == 'Right':
+            feats_ex[29:173] = find_liwc_feats(i['id'], rid_index, right_feats)
+        feats[data_index] = feats_ex
+        data_index +=1
 
-
-
-
-    np.savez_compressed( args.output, feats)
+    np.savez_compressed(args.output,feats)
 
     
 if __name__ == "__main__": 
@@ -235,7 +261,6 @@ if __name__ == "__main__":
     parser.add_argument("-o", "--output", help="Directs the output to a filename of your choice", required=True)
     parser.add_argument("-i", "--input", help="The input JSON file, preprocessed as in Task 1", required=True)
     args = parser.parse_args()
-                 
 
     main(args)
 

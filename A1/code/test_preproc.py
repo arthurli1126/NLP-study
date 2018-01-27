@@ -23,7 +23,7 @@ class A1PreprocTestCase(unittest.TestCase):
         self.assertIsInstance(preproc1('This is a string!', steps=[3]), str)
         # test wwww.
         self.assertEqual(preproc1('www.', steps=[3]),
-            ' ')
+             '')
         # test wwww.
         self.assertEqual(preproc1('I found it here: www.conspiracytheory.net', steps=[3]),
             'I found it here: ')
@@ -37,13 +37,18 @@ class A1PreprocTestCase(unittest.TestCase):
         self.assertEqual(preproc1('I found it here: https://conspiracytheory.thiscouldbeanything', steps=[3]),
             'I found it here: ')
         # check multiple URLs
-        self.assertEqual(preproc1('I found it here: https://conspiracytheory.net. Also checkout: www.infowars.com', steps=[3]),
-            'I found it here: . Also checkout: ')
+        self.assertEqual(preproc1('I found it here: https://conspiracytheory.net Also checkout: www.infowars.com', steps=[3]),
+            'I found it here:  Also checkout: ')
+
+        self.assertEqual(preproc1('I found it here https://conspiracytheory.thiscouldbeanything', steps=[3]),
+                         'I found it here')
     def test_step4(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[4]), str)
         self.assertEqual(preproc1('This is a string!', steps=[4]),'This is a string !')
         #self.assertEqual(preproc1('st. louis was nice.', steps=[4]), 'st. louis was ncie .')
         self.assertEqual(preproc1('sss st. louis was nice.', steps=[4]), 'sss st.louis was nice .')
+        self.assertEqual(preproc1('sss st. louis      was     nice.', steps=[4]), 'sss st.louis was nice .')
+        self.assertEqual(preproc1('sss st. louis  \n  \r  was     nice.', steps=[4]), 'sss st.louis was nice .')
     def test_step5(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[5]), str)
         pass
