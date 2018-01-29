@@ -1,23 +1,28 @@
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
+from sklearn.metrics import confusion_matrix
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier,AdaBoostClassifier
+from sklearn.neural_network import MLPClassifier
 import numpy as np
 import argparse
 import sys
 import os
 
+
 def accuracy( C ):
     ''' Compute accuracy given Numpy array confusion matrix C. Returns a floating point value '''
-    print ('TODO')
+    return np.sum(np.diag(C))/np.sum(C)
 
 def recall( C ):
     ''' Compute recall given Numpy array confusion matrix C. Returns a list of floating point values '''
-    print ('TODO')
-
+    return np.diag(C) / np.sum(C, axis=1)
 def precision( C ):
     ''' Compute precision given Numpy array confusion matrix C. Returns a list of floating point values '''
-    print ('TODO')
-    
+    return np.diag(C) / np.sum(C, axis=0)
+
+
 
 def class31(filename):
     ''' This function performs experiment 3.1
@@ -32,7 +37,74 @@ def class31(filename):
        y_test: NumPy array, with the selected testing classes
        i: int, the index of the supposed best classifier
     '''
-    print('TODO Section 3.1')
+    feats = np.load(filename)
+    X_train, X_test, y_train, y_test = train_test_split(feats['arr_0'][:, 0:173], feats['arr_0'][:, 173], test_size=0.2,
+                                                        random_state=10)
+    #TODO: Check NAN feature mostly related to norm
+    X_train = np.nan_to_num(X_train)
+    X_test  = np.nan_to_num(X_test)
+
+    #SVM with linear kernel
+    print("Using svm(linear classiifier)")
+    svm_linear = SVC(kernel='linear')
+    svm_linear.fit(X_train, y_train)
+    print("using svm(linear) predict")
+    sl_y_prediction = svm_linear.predict(X_test)
+    sl_cm = confusion_matrix(y_test,sl_y_prediction)
+    sl_acc = accuracy(sl_cm)
+    sl_re = recall(sl_cm)
+    sl_pre = precision(sl_cm)
+    print("acc:{},\nre:{},\npre:{}".format(sl_acc,sl_re,sl_pre))
+
+    #SVM with rbf
+    print("Using svm(rbf classiifier)")
+    svm_rbf = SVC(kernel='rbf', gamma=2)
+    svm_rbf.fit(X_train, y_train)
+    print("using svm(rbf) predict")
+    sr_y_prediction = svm_rbf.predict(X_test)
+    sr_cm = confusion_matrix(y_test, sr_y_prediction)
+    sr_acc = accuracy(sr_cm)
+    sr_re = recall(sr_cm)
+    sr_pre = precision(sr_cm)
+    print("acc:{},\nre:{},\npre:{}".format(sr_acc, sr_re, sr_pre))
+
+    #Random forest
+    print("Using forest classifier")
+    rfc = RandomForestClassifier(n_estimators=10,max_depth=5)
+    rfc.fit(X_train, y_train)
+    print("using rfc predict")
+    rfc_y_prediction = rfc.predict(X_test)
+    rfc_cm = confusion_matrix(y_test, rfc_y_prediction)
+    rfc_acc = accuracy(rfc_cm)
+    rfc_re = recall(rfc_cm)
+    rfc_pre = precision(rfc_cm)
+    print("acc:{},\nre:{},\npre:{}".format(rfc_acc, rfc_re, rfc_pre))
+
+    #MLP
+    print("Using MLP classifier")
+    mlp = MLPClassifier(alpha=0.05)
+    mlp.fit(X_train, y_train)
+    print("using mlp predict")
+    mlp_y_prediction = mlp.predict(X_test)
+    mlp_cm = confusion_matrix(y_test, mlp_y_prediction)
+    mlp_acc = accuracy(mlp_cm)
+    mlp_re = recall(mlp_cm)
+    mlp_pre = precision(mlp_cm)
+    print("acc:{},\nre:{},\npre:{}".format(mlp_acc, mlp_re, mlp_pre))
+
+    #AdaBoost
+    print("Using AdaBoost classifier")
+    adbc = AdaBoostClassifier()
+    adbc.fit(X_train, y_train)
+    print("using adbc predict")
+    adbc_y_prediction = adbc.predict(X_test)
+    adbc_cm = confusion_matrix(y_test, adbc_y_prediction)
+    adbc_acc = accuracy(adbc_cm)
+    adbc_re = recall(adbc_cm)
+    adbc_pre = precision(adbc_cm)
+    print("acc:{},\nre:{},\npre:{}".format(adbc_acc, adbc_re, adbc_pre))
+
+
 
     return (X_train, X_test, y_train, y_test,iBest)
 
@@ -79,6 +151,7 @@ def class34( filename, i ):
     print('TODO Section 3.4')
     
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description='Process each .')
     parser.add_argument("-i", "--input", help="the input npz file from Task 2", required=True)
     args = parser.parse_args()
