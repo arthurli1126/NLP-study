@@ -9,7 +9,7 @@ import numpy as np
 import argparse
 import sys
 import os
-
+import csv
 
 def accuracy( C ):
     ''' Compute accuracy given Numpy array confusion matrix C. Returns a floating point value '''
@@ -104,7 +104,25 @@ def class31(filename):
     adbc_pre = precision(adbc_cm)
     print("acc:{},\nre:{},\npre:{}".format(adbc_acc, adbc_re, adbc_pre))
 
-
+    iBest = np.array([sl_acc, sr_acc, rfc_acc, mlp_acc, adbc_acc]).argmax() + 1
+    #Write to csv
+    with open('a1_3.1.csv','w', newline='') as csvfile:
+        file_writer = csv.writer(csvfile, delimiter=',')
+        file_writer.writerow([1,sl_acc]+sl_re.tolist()+sl_pre.tolist()
+                             + sl_cm[0].tolist() +sl_cm[1].tolist()
+                             + sl_cm[2].tolist() +sl_cm[3].tolist())
+        file_writer.writerow([2, sr_acc] + sr_re.tolist() + sr_pre.tolist()
+                             + sr_cm[0].tolist() + sr_cm[1].tolist()
+                             + sr_cm[2].tolist() + sr_cm[3].tolist())
+        file_writer.writerow([3, rfc_acc] + rfc_re.tolist() + rfc_pre.tolist()
+                             + rfc_cm[0].tolist() + rfc_cm[1].tolist()
+                             + rfc_cm[2].tolist() + rfc_cm[3].tolist())
+        file_writer.writerow([4, mlp_acc] + mlp_re.tolist() + mlp_pre.tolist()
+                             + mlp_cm[0].tolist() + mlp_cm[1].tolist()
+                             + mlp_cm[2].tolist() + mlp_cm[3].tolist())
+        file_writer.writerow([5, adbc_acc] + adbc_re.tolist() + adbc_pre.tolist()
+                             + adbc_cm[0].tolist() + adbc_cm[1].tolist()
+                             + adbc_cm[2].tolist() + adbc_cm[3].tolist())
 
     return (X_train, X_test, y_train, y_test,iBest)
 
@@ -123,7 +141,9 @@ def class32(X_train, X_test, y_train, y_test,iBest):
        X_1k: numPy array, just 1K rows of X_train
        y_1k: numPy array, just 1K rows of y_train
    '''
-    print('TODO Section 3.2')
+
+
+
 
     return (X_1k, y_1k)
     
