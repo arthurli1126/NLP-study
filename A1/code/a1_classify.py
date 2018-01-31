@@ -11,6 +11,10 @@ import sys
 import os
 import csv
 
+np.random.seed(1746)
+
+
+
 def accuracy( C ):
     ''' Compute accuracy given Numpy array confusion matrix C. Returns a floating point value '''
     return np.sum(np.diag(C))/np.sum(C)
@@ -127,6 +131,10 @@ def class31(filename):
     return (X_train, X_test, y_train, y_test,iBest)
 
 
+def sampler(X_train, y_train, size):
+    indices = np.random.choice(range(X_train.shape[0]),size, replace=False)
+    return np.take(X_train,indices,0), np.take(y_train,indices,0)
+
 def class32(X_train, X_test, y_train, y_test,iBest):
     ''' This function performs experiment 3.2
     
@@ -142,9 +150,45 @@ def class32(X_train, X_test, y_train, y_test,iBest):
        y_1k: numPy array, just 1K rows of y_train
    '''
 
+    print("X_train shape {}".format(X_train.shape))
+    X_1k,y_1k = sampler(X_train,y_train,10)
+    X_5k,y_5k = sampler(X_train,y_train,50)
+    X_10k, y_10k = sampler(X_train, y_train, 100)
+    X_15k, y_15k = sampler(X_train, y_train, 150)
+    X_20k, y_20k = sampler(X_train, y_train, 200)
 
+    classifiers = [SVC(kernel='linear'), SVC(kernel='rbf', gamma=2),
+                  RandomForestClassifier(n_estimators=10, max_depth=5),
+                  MLPClassifier(alpha=0.05),AdaBoostClassifier()]
+    best_classifier = classifiers[iBest-1]
+    accuracies = []
+    print("Best Model is {}".format(iBest))
+    #fit models with differet amount of data
+    c1k = best_classifier.copy().fit(X_1k, y_1k)
+    c2k = best_classifier.copy().fit(X_5k, y_5k)
+    c3k = best_classifier.copy().fit(X_10k, y_10k)
+    c4k = best_classifier.copy().fit(X_15k, y_15k)
+    c5k = best_classifier.copy().fit(X_20k, y_20k)
+    print("Start prediction")
+    #prediction
+    c1k_pred = c1k.predict(X_test)
+    c2k_pred = c2k.predict(X_test)
+    c3k_pred = c3k.predict(X_test)
+    c4k_pred = c4k.predict(X_test)
+    c5k_pred = c5k.predict(X_test)
 
+    #confusion matrics and accuracy
 
+    accuracies.append(accuracy(confusion_matrix(y_test,c1k_pred)))
+    accuracies.append(accuracy(confusion_matrix(y_test,c2k_pred)))
+    accuracies.append(accuracy(confusion_matrix(y_test,c3k_pred)))
+    accuracies.append(accuracy(confusion_matrix(y_test,c4k_pred)))
+    accuracies.append(accuracy(confusion_matrix(y_test,c5k_pred)))
+
+    # Write to csv
+    with open('a1_3.2.csv', 'w', newline='') as csvfile:
+        file_writer = csv.writer(csvfile, delimiter=',')
+        file_writer.writerow(accuracies)
     return (X_1k, y_1k)
     
 def class33(X_train, X_test, y_train, y_test, i, X_1k, y_1k):
@@ -175,5 +219,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process each .')
     parser.add_argument("-i", "--input", help="the input npz file from Task 2", required=True)
     args = parser.parse_args()
-
     # TODO : complete each classification experiment, in sequence.
+    X_train, X_test, y_train, y_test, iBest = class31(args.input)
+    print("class32")
+    X_1k, y_1k = class32(X_train, X_test , y_train, y_test, iBest)
