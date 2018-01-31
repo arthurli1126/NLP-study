@@ -1,5 +1,6 @@
 from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import f_classif
 from sklearn.feature_selection import chi2
 from sklearn.metrics import confusion_matrix
 from sklearn.svm import SVC
@@ -10,6 +11,7 @@ import argparse
 import sys
 import os
 import csv
+import copy
 
 np.random.seed(1746)
 
@@ -164,11 +166,11 @@ def class32(X_train, X_test, y_train, y_test,iBest):
     accuracies = []
     print("Best Model is {}".format(iBest))
     #fit models with differet amount of data
-    c1k = best_classifier.copy().fit(X_1k, y_1k)
-    c2k = best_classifier.copy().fit(X_5k, y_5k)
-    c3k = best_classifier.copy().fit(X_10k, y_10k)
-    c4k = best_classifier.copy().fit(X_15k, y_15k)
-    c5k = best_classifier.copy().fit(X_20k, y_20k)
+    c1k = copy.copy(best_classifier).fit(X_1k, y_1k)
+    c2k = copy.copy(best_classifier).fit(X_5k, y_5k)
+    c3k = copy.copy(best_classifier).fit(X_10k, y_10k)
+    c4k = copy.copy(best_classifier).fit(X_15k, y_15k)
+    c5k = copy.copy(best_classifier).fit(X_20k, y_20k)
     print("Start prediction")
     #prediction
     c1k_pred = c1k.predict(X_test)
@@ -203,7 +205,39 @@ def class33(X_train, X_test, y_train, y_test, i, X_1k, y_1k):
        X_1k: numPy array, just 1K rows of X_train (from task 3.2)
        y_1k: numPy array, just 1K rows of y_train (from task 3.2)
     '''
-    print('TODO Section 3.3')
+    classifiers = [SVC(kernel='linear'), SVC(kernel='rbf', gamma=2),
+                   RandomForestClassifier(n_estimators=10, max_depth=5),
+                   MLPClassifier(alpha=0.05), AdaBoostClassifier()]
+    best_classifier = classifiers[i - 1]
+    k = [5,10,20,30,40,50]
+    acc = []
+    with open('a1_3.3.csv', 'w', newline='') as csvfile:
+        file_writer = csv.writer(csvfile, delimiter=',')
+        for i in k:
+            selector = SelectKBest(f_classif, i)
+            X_new = selector.fit_transform(X_train, y_train)
+            pp = selector.pvalues_
+            file_writer.writerow([i]+pp)
+        #prediction for both X sets
+        c_x = copy.copy(best_classifier).fit(X_train, y_train)
+        c_1k = copy.copy(best_classifier).fit(X_1k,y_1k)
+        c_x_pred = c_x.predict(X_test)
+        c_1k_pred = c_1k.predict(X_test)
+        acc.append(accuracy(confusion_matrix(y_test, c_x_pred)))
+        acc.append(accuracy(confusion_matrix(y_test, c_1k_pred)))
+        file_writer.writerow(["32K",acc[0], "1K", acc[1]])
+
+
+
+
+
+
+
+
+
+
+
+
 
 def class34( filename, i ):
     ''' This function performs experiment 3.4
@@ -223,3 +257,4 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test, iBest = class31(args.input)
     print("class32")
     X_1k, y_1k = class32(X_train, X_test , y_train, y_test, iBest)
+    class33(X_train, X_test, y_train, y_test, iBest, X_1k, y_1k)
