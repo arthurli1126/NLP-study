@@ -1,7 +1,6 @@
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,KFold
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
-from sklearn.feature_selection import chi2
 from sklearn.metrics import confusion_matrix
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier,AdaBoostClassifier
@@ -12,6 +11,7 @@ import sys
 import os
 import csv
 import copy
+from scipy import stats
 
 np.random.seed(1746)
 
@@ -211,6 +211,7 @@ def class33(X_train, X_test, y_train, y_test, i, X_1k, y_1k):
     best_classifier = classifiers[i - 1]
     k = [5,10,20,30,40,50]
     acc = []
+
     with open('a1_3.3.csv', 'w', newline='') as csvfile:
         file_writer = csv.writer(csvfile, delimiter=',')
         for i in k:
@@ -219,24 +220,17 @@ def class33(X_train, X_test, y_train, y_test, i, X_1k, y_1k):
             pp = selector.pvalues_
             file_writer.writerow([i]+pp)
         #prediction for both X sets
-        c_x = copy.copy(best_classifier).fit(X_train, y_train)
-        c_1k = copy.copy(best_classifier).fit(X_1k,y_1k)
-        c_x_pred = c_x.predict(X_test)
-        c_1k_pred = c_1k.predict(X_test)
+        selector = SelectKBest(f_classif, 5)
+        X_1k_new = selector.fit_transform(X_1k, y_1k)
+        X_new = selector.fit_transform(X_train, y_train)
+        c_x = copy.copy(best_classifier).fit(X_new, y_train)
+        c_1k = copy.copy(best_classifier).fit(X_1k_new,y_1k)
+
+        c_x_pred = c_x.predict(selector.transform(X_test))
+        c_1k_pred = c_1k.predict(selector.transform(X_test))
         acc.append(accuracy(confusion_matrix(y_test, c_x_pred)))
         acc.append(accuracy(confusion_matrix(y_test, c_1k_pred)))
         file_writer.writerow(["32K",acc[0], "1K", acc[1]])
-
-
-
-
-
-
-
-
-
-
-
 
 
 def class34( filename, i ):
@@ -246,7 +240,52 @@ def class34( filename, i ):
        filename : string, the name of the npz file from Task 2
        i: int, the index of the supposed best classifier (from task 3.1)  
         '''
-    print('TODO Section 3.4')
+    feats = np.load(filename)['arr_0']
+    kf = KFold(n_splits=5,shuffle=True)
+    X = feats[:,0:173]
+    Y = feats[:,173]
+    classifiers = [SVC(kernel='linear'), SVC(kernel='rbf', gamma=2),
+                   RandomForestClassifier(n_estimators=10, max_depth=5),
+                   MLPClassifier(alpha=0.05), AdaBoostClassifier()]
+
+    with open('a1_3.4.csv', 'w', newline='') as csvfile:
+        file_writer = csv.writer(csvfile, delimiter=',')
+        acc_total = []
+        compare = []
+        for train_index, test_index in kf.split(X):
+            acc = []
+            print("Train:", train_index, "Test:", test_index)
+            X_train = X[train_index]
+            X_test = X[test_index]
+            y_train = Y[train_index]
+            y_test = Y[test_index]
+            X_train = np.nan_to_num(X_train)
+            X_test = np.nan_to_num(X_test)
+            for j in range(len(classifiers)):
+                classifiers[j].fit(X_train,y_train)
+                temp_acc = accuracy(confusion_matrix(y_test, classifiers[j].predict(X_test)))
+                acc.append(temp_acc)
+            acc_total.append(acc)
+            file_writer.writerow(acc)
+        for k in range(5):
+            if k != i-1:
+                S= stats.ttest_rel(acc_total[k],acc_total[i-1])
+                compare.append(S.pvalue)
+        file_writer.writerow(compare)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 if __name__ == "__main__":
 
