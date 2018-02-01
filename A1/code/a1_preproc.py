@@ -28,6 +28,7 @@ st_words = [i.replace("\n", "") for i in st_words]
 
 #create nlp
 nlp = spacy.load('en', disable=['parse', 'ner'])
+punctuation = re.sub(r"[']",'',string.punctuation)
 
 def preproc1(comment, steps=range(1,11)):
     ''' This function pre-processes a single comment
@@ -105,8 +106,6 @@ def remove_urls(comment):
 split_punctuation
 '''
 def split_punctuation(comment,abbrevs):
-
-    punctuation = re.sub(r"[']",'',string.punctuation)
     #change the period of abbrev to magic=xeq this is bad
     for i in abbrevs:
         comment = re.sub(r"\b{} ".format(i), i.replace(".","xeqxeq"), comment)

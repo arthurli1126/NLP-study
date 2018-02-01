@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split,KFold
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
 from sklearn.metrics import confusion_matrix
+#todo change it to linear SVC
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier,AdaBoostClassifier
 from sklearn.neural_network import MLPClassifier
