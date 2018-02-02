@@ -47,7 +47,6 @@ def preproc1(comment, steps=range(1,11)):
     modComm_6 = ''
     modComm_8 = ''
 
-
     if 1 in steps:
         comment = remove_newline(comment)
     if 2 in steps:
@@ -62,18 +61,21 @@ def preproc1(comment, steps=range(1,11)):
         modComm_6, modComm_8 = spacy_support(comment)
         comment = modComm_6
     if 7 in steps:
-        comment = remove_sd(comment,st_words)
+        if 8 not in steps:
+            comment = remove_sd(comment,st_words)
     if 8 in steps:
-        if 6 in steps:
+        if 6 in steps in steps:
             comment = modComm_8
         else:
             modComm_6, modComm_8 = spacy_support(comment)
-            comment = modComm_8
+            if 7 in steps:
+                comment = remove_sd(modComm_8,st_words)
+            else:
+                comment = modComm_8
     if 9 in steps:
         comment = add_newline_eos(comment)
     if 10 in steps:
         comment = convert_lc(comment)
-
 
     modComm = comment
     return modComm
@@ -103,7 +105,8 @@ split_punctuation
 '''
 def split_punctuation(comment,abbrevs):
     #change the period of abbrev to magic=xeq this is bad
-    comment = re.sub(r"(\b)(" + "|".join(abbrevs) + r")",lambda m: m.group(1) + m.group(2).replace(".","xeqxeq"), comment)
+    comment = re.sub(r"(\b)(" + "|".join(abbrevs) + r")",
+                     lambda m: m.group(1) + m.group(2).replace(".","xeqxeq"), comment)
     comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2> ', comment).replace("xeqxeq", ".")
     comment = re.sub(r"\s+",' ',comment)
     return comment
@@ -114,12 +117,16 @@ def split_clitics(comment):
               '\'re',
               '\'ve',
               '\'d',
-              '\'t',
+              'n\'t',
               '\'ll',
               '\'m',
-              's\'']
-
-    comment = re.sub('\'',' ',comment)
+              's\'',
+              '\'em',
+              'y\'',
+              'Y\'']
+    pattern = re.compile(r'\b(\w*)(' +r"|".join(c_list)+r")(\w*)\b")
+    comment = re.sub(pattern,
+                     lambda m: m.group(1) +" "+ m.group(2) +" "+m.group(3),comment)
     return comment
 
 '''

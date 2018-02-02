@@ -282,11 +282,6 @@ def class34( filename, i ):
 
 
 
-
-
-
-
-
     
 if __name__ == "__main__":
 
