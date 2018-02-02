@@ -8,6 +8,8 @@ import re
 import string
 import spacy
 
+#todo: need to implement multithreading
+
 #indir = '/u/cs401/A1/data/';
 #sw_path = 'u/cs401/Wordlists/StopWords';
 #ab_path = 'u/cs401/Wordlists/abbrev.english';
@@ -92,28 +94,19 @@ def replace_html_code(comment):
 remove urls
 '''
 def remove_urls(comment):
-    #need to replace it in the future
-    # if 'http' in comment:
-    #     print('before:%s' %comment)
     pattern = re.compile(r'(http[^\s]*|www[^\s]*)')
     comment = re.sub(pattern,'', comment)
-    # if 'http' in comment:
-    #     print('after:%s' % comment)
     return comment
-
 
 '''
 split_punctuation
 '''
 def split_punctuation(comment,abbrevs):
     #change the period of abbrev to magic=xeq this is bad
-    for i in abbrevs:
-        comment = re.sub(r"\b{} ".format(i), i.replace(".","xeqxeq"), comment)
-
-    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2>', comment).replace("xeqxeq", ".")
+    comment = re.sub(r"(\b)(" + "|".join(abbrevs) + r")",lambda m: m.group(1) + m.group(2).replace(".","xeqxeq"), comment)
+    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2> ', comment).replace("xeqxeq", ".")
     comment = re.sub(r"\s+",' ',comment)
     return comment
-
 
 def split_clitics(comment):
  #clitics list will be sub
@@ -146,8 +139,9 @@ def spacy_support(comment):
 
 
 def remove_sd(comment, st_words):
-    for wd in st_words:
-        comment = re.sub(r'\b{}(\/\S*\b)?\b'.format(wd),'', comment)
+    pattern = re.compile(r"\b("+r"|".join(st_words)+r")(\/\S*)?\b")
+    comment = re.sub(pattern,'', comment+' ')
+    comment = re.sub(r"\s+", ' ', comment)
     return comment
 
 def add_newline_eos(comment):
@@ -162,10 +156,6 @@ def convert_lc(comment):
 def main(args):
 
     allOutput = []
-
-
-
-
 
     for subdir, dirs, files in os.walk(dev_dir):
         for file in files:
@@ -186,12 +176,15 @@ def main(args):
             # TODO: process the body field (j['body']) with preproc1(...) using default for `steps` argument
             # TODO: replace the 'body' field with the processed text
             # TODO: append the result to 'allOutput'
+            h = 0
             for line in data:
                 j = json.loads(line)
                 d = {key:value for (key, value) in j.items() if key in ('id', 'body')}
                 d["cat"] = file
                 d["body"] = preproc1(d["body"])
                 allOutput.append(d)
+                h+=1
+                print(h)
 
     fout = open(args.output, 'w')
     fout.write(json.dumps(allOutput))

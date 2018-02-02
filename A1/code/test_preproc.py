@@ -9,7 +9,7 @@ class A1PreprocTestCase(unittest.TestCase):
     def test_step1(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[1]), str)
         self.assertEqual(preproc1('\nTest trailing & proceeding\n', steps=[1]),
-            'Test trailing & proceeding')
+            ' Test trailing & proceeding ')
         self.assertEqual(preproc1('Test\nin\nbetween', steps=[1]),
             'Test in between')
         self.assertEqual(preproc1('\nTest\ntrailing,\nproceeding\n&\nin\nbetween\n',
@@ -41,14 +41,14 @@ class A1PreprocTestCase(unittest.TestCase):
             'I found it here:  Also checkout: ')
 
         self.assertEqual(preproc1('I found it here https://conspiracytheory.thiscouldbeanything', steps=[3]),
-                         'I found it here')
+                         'I found it here ')
     def test_step4(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[4]), str)
-        self.assertEqual(preproc1('This is a string!', steps=[4]),'This is a string !')
+        self.assertEqual(preproc1('This is a string!', steps=[4]),'This is a string ! ')
         #self.assertEqual(preproc1('st. louis was nice.', steps=[4]), 'st. louis was ncie .')
-        self.assertEqual(preproc1('sss st. louis was nice.', steps=[4]), 'sss st.louis was nice .')
-        self.assertEqual(preproc1('sss st. louis      was     nice.', steps=[4]), 'sss st.louis was nice .')
-        self.assertEqual(preproc1('sss st. louis  \n  \r  was     nice.', steps=[4]), 'sss st.louis was nice .')
+        self.assertEqual(preproc1('sss st. louis was nice.', steps=[4]), 'sss st. louis was nice . ')
+        self.assertEqual(preproc1('sss st. louis      was     nice.', steps=[4]), 'sss st. louis was nice . ')
+        self.assertEqual(preproc1('sss st. louis  \n  \r  was     nice.', steps=[4]), 'sss st. louis was nice . ')
     def test_step5(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[5]), str)
         pass
@@ -61,18 +61,18 @@ class A1PreprocTestCase(unittest.TestCase):
     def test_step7(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[7]), str)
         # simple test, ALL stopwords, WITHOUT POS
-        self.assertEqual(preproc1('all must go', steps=[7]), '  ')
+        self.assertEqual(preproc1('all must go', steps=[7]), ' ')
         # simple test, ALL stopwords, WITH POS
-        self.assertEqual(preproc1('all/DT must/MD go/VB', steps=[7]), '  ')
+        self.assertEqual(preproc1('all/DT must/MD go/VB', steps=[7]), ' ')
         # simple test, only ONE stopword, WITHOUT POS
         self.assertEqual(preproc1('most of these words must go', steps=[7]),
-            '   words  ')
+            ' words ')
         # simple test, only ONE stopword, WITH POS
         self.assertEqual(preproc1('most/JJS of/IN these/DT words/NNS must/MD go/VB', steps=[7]),
-            '   words/NNS  ')
+            ' words/NNS ')
         # test that stopwords sequences larger words are not removed
         self.assertEqual(preproc1('the word go is in gopher', steps=[7]),
-            ' word    gopher')
+            ' word gopher ')
     def test_step8(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[8]), str)
         self.assertEqual(preproc1('I killed an elephant in my pajamas', steps=[8]),

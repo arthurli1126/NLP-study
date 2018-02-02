@@ -88,9 +88,9 @@ def extract1( comment ):
         bng_norm = bng_dict.get(word,'')
         rw_norm = rw_dict.get(word, '')
 
-        print(word)
-        print(bng_norm)
-        print(rw_norm)
+        # print(word)
+        # print(bng_norm)
+        # print(rw_norm)
         if '' not in bng_norm:
             aoa.append(float(bng_norm[0]))
             img.append(float(bng_norm[1]))
@@ -108,6 +108,8 @@ def extract1( comment ):
             continue
 
         #need to think a better way but should be enough for now
+        #Todo need to change the code structure loop over token instead of steps
+
         if any(j +'/PRP' in i for j in fp) \
                 or any(k +'/PRP$' in i for k in fp):
             feats[0] +=1
@@ -238,7 +240,8 @@ def main( args ):
     feats_id, alt_feats, center_feats, left_feats, right_feats = liwc()
     data_index = 0
     for i in data:
-        print("Processing comment: %s" %i['body'])
+        #print("Processing comment: %s" %i['body'])
+        print(data_index)
         feats_ex = extract1(i['body'])
         feats_ex[173] = cat_mapping.get(i['cat']," ")
         if i['cat'] == 'Alt':

@@ -3,7 +3,7 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
 from sklearn.metrics import confusion_matrix
 #todo change it to linear SVC
-from sklearn.svm import SVC
+from sklearn.svm import SVC,LinearSVC
 from sklearn.ensemble import RandomForestClassifier,AdaBoostClassifier
 from sklearn.neural_network import MLPClassifier
 import numpy as np
@@ -53,7 +53,7 @@ def class31(filename):
 
     #SVM with linear kernel
     print("Using svm(linear classiifier)")
-    svm_linear = SVC(kernel='linear')
+    svm_linear = LinearSVC()
     svm_linear.fit(X_train, y_train)
     print("using svm(linear) predict")
     sl_y_prediction = svm_linear.predict(X_test)
@@ -160,7 +160,7 @@ def class32(X_train, X_test, y_train, y_test,iBest):
     X_15k, y_15k = sampler(X_train, y_train, 150)
     X_20k, y_20k = sampler(X_train, y_train, 200)
 
-    classifiers = [SVC(kernel='linear'), SVC(kernel='rbf', gamma=2),
+    classifiers = [LinearSVC(), SVC(kernel='rbf', gamma=2),
                   RandomForestClassifier(n_estimators=10, max_depth=5),
                   MLPClassifier(alpha=0.05),AdaBoostClassifier()]
     best_classifier = classifiers[iBest-1]
@@ -206,7 +206,7 @@ def class33(X_train, X_test, y_train, y_test, i, X_1k, y_1k):
        X_1k: numPy array, just 1K rows of X_train (from task 3.2)
        y_1k: numPy array, just 1K rows of y_train (from task 3.2)
     '''
-    classifiers = [SVC(kernel='linear'), SVC(kernel='rbf', gamma=2),
+    classifiers = [LinearSVC(), SVC(kernel='rbf', gamma=2),
                    RandomForestClassifier(n_estimators=10, max_depth=5),
                    MLPClassifier(alpha=0.05), AdaBoostClassifier()]
     best_classifier = classifiers[i - 1]
@@ -245,7 +245,7 @@ def class34( filename, i ):
     kf = KFold(n_splits=5,shuffle=True)
     X = feats[:,0:173]
     Y = feats[:,173]
-    classifiers = [SVC(kernel='linear'), SVC(kernel='rbf', gamma=2),
+    classifiers = [LinearSVC(), SVC(kernel='rbf', gamma=2),
                    RandomForestClassifier(n_estimators=10, max_depth=5),
                    MLPClassifier(alpha=0.05), AdaBoostClassifier()]
 
