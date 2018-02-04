@@ -1,5 +1,4 @@
 import numpy as np
-import sys
 import argparse
 import os
 import json
@@ -76,7 +75,6 @@ def extract1( comment ):
 
     #TODO need to use regex seems like
     for i in comment:
-
         if len(i) <2:
             continue
         #some feature need to calculate regardless of words
