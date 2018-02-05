@@ -32,6 +32,7 @@ st_words = [i.replace("\n", "") for i in st_words]
 nlp = spacy.load('en', disable=['parse', 'ner'])
 punctuation = re.sub(r"[']",'',string.punctuation)
 
+#TODO： check end of line step
 def preproc1(comment, steps=range(1,11)):
     ''' This function pre-processes a single comment
 
