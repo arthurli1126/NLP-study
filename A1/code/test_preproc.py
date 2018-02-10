@@ -9,11 +9,11 @@ class A1PreprocTestCase(unittest.TestCase):
     def test_step1(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[1]), str)
         self.assertEqual(preproc1('\nTest trailing & proceeding\n', steps=[1]),
-            ' Test trailing & proceeding ')
+            'Test trailing & proceeding')
         self.assertEqual(preproc1('Test\nin\nbetween', steps=[1]),
             'Test in between')
         self.assertEqual(preproc1('\nTest\ntrailing,\nproceeding\n&\nin\nbetween\n',
-            steps=[1]), ' Test trailing, proceeding & in between')
+            steps=[1]), 'Test trailing, proceeding & in between')
     def test_step2(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[2]), str)
         self.assertEqual(preproc1('Simple test: &#33', steps=[2]), 'Simple test: !')
@@ -49,9 +49,28 @@ class A1PreprocTestCase(unittest.TestCase):
         self.assertEqual(preproc1('sss st. louis was nice.', steps=[4]), 'sss st. louis was nice . ')
         self.assertEqual(preproc1('sss st. louis      was     nice.', steps=[4]), 'sss st. louis was nice . ')
         self.assertEqual(preproc1('sss st. louis  \n  \r  was     nice.', steps=[4]), 'sss st. louis was nice . ')
+        self.assertEqual(preproc1('ss!!!!!!!!!', steps=[4]), 'ss !!!!!!!!! ')
+        self.assertEqual(preproc1('ss!!!!!!!!!sdsd', steps=[4]), 'ss !!!!!!!!! sdsd')
+    '''
+    c_list = ['\'s',
+              '\'re',
+              '\'ve',
+              '\'d',
+              'n\'t',
+              '\'ll',
+              '\'m',
+              's\'',
+              '\'em',
+              'y\'',
+              'Y\'']
+    '''
     def test_step5(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[5]), str)
-        pass
+        self.assertEqual(preproc1('Bob\'s car is camaro',steps=[5]), 'Bob \'s car is camaro')
+        self.assertEqual(preproc1('you\'re camaro',steps=[5]), 'you \'re camaro')
+        self.assertEqual(preproc1('you aren\'t camaro', steps=[5]), 'you are n\'t camaro')
+        self.assertEqual(preproc1('parents\' camaro', steps=[5]), 'parents \' camaro')
+
     def test_step6(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[6]), str)
         self.assertEqual(preproc1('I shot an elephant in my pajamas', steps=[6]),
@@ -75,11 +94,14 @@ class A1PreprocTestCase(unittest.TestCase):
             ' word gopher ')
     def test_step8(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[8]), str)
-        self.assertEqual(preproc1('I killed an elephant in my pajamas', steps=[8]),
+        self.assertEqual(preproc1('I Killed an elephant in my pajamas', steps=[8]),
                          'I/PRP kill/VBD an/DT elephant/NN in/IN my/PRP$ pajama/NNS')
     def test_step9(self):
         self.assertIsInstance(preproc1('This is a string!', steps=[9]), str)
-        self.assertEqual(preproc1('This is a string. dsdjs', steps=[9]), "This is a string.\n dsdjs")
+        self.assertEqual(preproc1('I/PRP kill/VBD an/DT elephant/NN ./. I/PRP', steps=[9]),
+                         "I/PRP kill/VBD an/DT elephant/NN ./. \nI/PRP")
+        self.assertEqual(preproc1('I/PRP kill/VBD an/DT elephant/NN ./.', steps=[9]),
+                         "I/PRP kill/VBD an/DT elephant/NN ./.\n")
     def test_step10(self):
         self.assertIsInstance(preproc1('This/NNN!', steps=[10]), str)
         self.assertEqual(preproc1('sImpLe/NN TEST/NN', steps=[10]), 'simple/NN test/NN')

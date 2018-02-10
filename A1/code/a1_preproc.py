@@ -60,7 +60,7 @@ def preproc1(comment, steps=range(1, 11)):
     if 4 in steps:
         comment = split_punctuation(comment, abbrevs)
     if 5 in steps:
-        pass
+        comment = split_clitics(comment)
     if 6 in steps:
         modComm_6, modComm_8 = spacy_support(comment)
         comment = modComm_6
@@ -102,14 +102,11 @@ replace hmtl code with ascii
 def replace_html_code(comment):
     return html.unescape(comment)
 
-
 '''
 remove urls
 '''
-
-
 def remove_urls(comment):
-    pattern = re.compile(r'(http[^\s]*|www[^\s]*)')
+    pattern = re.compile(r'(http[^\s]*|www[^\s]*)',flags=re.I)
     comment = re.sub(pattern, '', comment)
     return comment
 
@@ -118,18 +115,17 @@ def remove_urls(comment):
 split_punctuation
 '''
 
-
 def split_punctuation(comment, abbrevs):
     # change the period of abbrev to magic=xeq this is bad
     comment = re.sub(r"(\b)(" + "|".join(abbrevs) + r")",
                      lambda m: m.group(1) + m.group(2).replace(".", "xeqxeq"), comment)
-    comment = re.sub(r"(\w)([{}])".format(punctuation), '\g<1> \g<2> ', comment).replace("xeqxeq", ".")
+    comment = re.sub(r"(\w+)([{}]+)(\s+|$|\w+)".format(punctuation), '\g<1> \g<2> \g<3>', comment).replace("xeqxeq", ".")
     comment = re.sub(r"\s+", ' ', comment)
     return comment
 
 
 def split_clitics(comment):
-    # clitics list will be sub
+    # clitics list will be sub except ' s' ' will need special way to separate it
     c_list = ['\'s',
               '\'re',
               '\'ve',
@@ -137,13 +133,17 @@ def split_clitics(comment):
               'n\'t',
               '\'ll',
               '\'m',
-              's\'',
               '\'em',
               'y\'',
               'Y\'']
-    pattern = re.compile(r'\b(\w*)(' + r"|".join(c_list) + r")(\w*)\b")
+    pattern = re.compile(r'\b(\w*)(' + r"|".join(c_list) + r")(\w+|\s+)\b",flags=re.I)
     comment = re.sub(pattern,
-                     lambda m: m.group(1) + " " + m.group(2) + " " + m.group(3), comment)
+                     lambda m: m.group(1) + " " + m.group(2) + " " +m.group(3), comment)
+
+    pattern = re.compile(r"\b(\w+)(s\')(\w+|\s+)\b", flags=re.I)
+    comment = re.sub(pattern,
+                     lambda m: m.group(1)+m.group(2)[0]+ " "+m.group(2)[1] + m.group(3), comment)
+    comment = re.sub(r"\s+", ' ', comment)
     return comment
 
 
@@ -166,14 +166,15 @@ def spacy_support(comment):
 
 
 def remove_sd(comment, st_words):
-    pattern = re.compile(r"\b(" + r"|".join(st_words) + r")(\/\S*)?\b")
+    pattern = re.compile(r"\b(" + r"|".join(st_words) + r")(\/\S*)?\b",flags=re.I)
     comment = re.sub(pattern, '', comment + ' ')
     comment = re.sub(r"\s+", ' ', comment)
     return comment
 
 
 def add_newline_eos(comment):
-    return re.sub(r"(\w)([.])", '\g<1>\g<2>\n', comment)
+    eos = ".?!"
+    return re.sub(r"(\s+)([{}]+/.+\s|[{}]+/.+$)".format(eos,eos), '\g<1>\g<2>\n', comment)
 
 
 # this one is little tricky
@@ -187,7 +188,7 @@ for this module to speed up the process
 '''
 
 
-def process_wrapper(data, file, steps=range(0, 10)):
+def process_wrapper(data, file, steps=range(1, 11)):
     comments = []
     # TODO: need to remove this in the furture
     h = 0
@@ -220,15 +221,6 @@ def main(args):
             data = [data[i] for i in random.sample(range(len(data)), int(args.max))]
             print("new data size %s" % len(data))
             allOutput.append(thread_pool.apply_async(process_wrapper, (data,file)))
-            # h = 0
-            # for line in data:
-            #     j = json.loads(line)
-            #     d = {key:value for (key, value) in j.items() if key in ('id', 'body')}
-            #     d["cat"] = file
-            #     d["body"] = preproc1(d["body"])
-            #     allOutput.append(d)
-            #     h+=1
-            #     print(h)
 
     results=[]
     for r in allOutput:
