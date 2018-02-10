@@ -8,24 +8,22 @@ import string
 import sys
 import spacy
 from multiprocessing.pool import ThreadPool
+import time
 
-
-# todo: need to implement multithreading
-
-# indir = '/u/cs401/A1/data/';
-# sw_path = 'u/cs401/Wordlists/StopWords';
-# ab_path = 'u/cs401/Wordlists/abbrev.english';
-dev_dir = '../data/';
-dev_sw_path = '../Wordlists/StopWords';
-dev_ab_path = '../Wordlists/abbrev.english';
+indir = '/u/cs401/A1/data/';
+sw_path = '/u/cs401/Wordlists/StopWords';
+ab_path = '/u/cs401/Wordlists/abbrev.english';
+#dev_dir = '../data/';
+#dev_sw_path = '../Wordlists/StopWords';
+#dev_ab_path = '../Wordlists/abbrev.english';
 
 # load abbrevs file
-abbrev_file = open(dev_ab_path)
+abbrev_file = open(ab_path)
 abbrevs = abbrev_file.readlines()
 abbrev_file.close()
 abbrevs = [i.replace("\n", "") for i in abbrevs]
 # load st_words file
-st_words_file = open(dev_sw_path)
+st_words_file = open(sw_path)
 st_words = st_words_file.readlines()
 st_words_file.close()
 st_words = [i.replace("\n", "") for i in st_words]
@@ -207,7 +205,7 @@ def main(args):
     allOutput = []
     thread_pool = ThreadPool(4)
 
-    for subdir, dirs, files in os.walk(dev_dir):
+    for subdir, dirs, files in os.walk(indir):
         for file in files:
             fullFile = os.path.join(subdir, file)
             print("Processing " + fullFile)
@@ -248,3 +246,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     main(args)
+    print(time.clock())
