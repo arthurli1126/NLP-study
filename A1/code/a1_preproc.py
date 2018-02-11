@@ -10,20 +10,22 @@ import spacy
 from multiprocessing.pool import ThreadPool
 import time
 
-indir = '/u/cs401/A1/data/';
-sw_path = '/u/cs401/Wordlists/StopWords';
-ab_path = '/u/cs401/Wordlists/abbrev.english';
-#dev_dir = '../data/';
-#dev_sw_path = '../Wordlists/StopWords';
-#dev_ab_path = '../Wordlists/abbrev.english';
+# indir = '/u/cs401/A1/data/';
+# sw_path = '/u/cs401/Wordlists/StopWords';
+# ab_path = '/u/cs401/Wordlists/abbrev.english';
+dev_dir = '../data/';
+dev_sw_path = '../Wordlists/StopWords';
+dev_ab_path = '../Wordlists/abbrev.english';
 
 # load abbrevs file
-abbrev_file = open(ab_path)
+abbrev_file = open(dev_ab_path)
+#abbrev_file = open(ab_path)
 abbrevs = abbrev_file.readlines()
 abbrev_file.close()
 abbrevs = [i.replace("\n", "") for i in abbrevs]
 # load st_words file
-st_words_file = open(sw_path)
+st_words_file = open(dev_sw_path)
+#st_words_file = open(sw_path)
 st_words = st_words_file.readlines()
 st_words_file.close()
 st_words = [i.replace("\n", "") for i in st_words]
@@ -31,6 +33,11 @@ st_words = [i.replace("\n", "") for i in st_words]
 # create nlp
 nlp = spacy.load('en', disable=['parse', 'ner'])
 punctuation = re.sub(r"[']", '', string.punctuation)
+
+#regex parrtern
+url_parrtern = re.compile(r'(http[^\s]*|www[^\s]*)',flags=re.I)
+pun_parrten_1 =re.compile(r"(\b)(" + "|".join(abbrevs) + r")")
+pun_parrten_2 = re.compile(r"(\w+)([{}]+)(\s+|$|\w+)".format(punctuation))
 
 
 # TODO： check end of line step
@@ -56,7 +63,7 @@ def preproc1(comment, steps=range(1, 11)):
     if 3 in steps:
         comment = remove_urls(comment)
     if 4 in steps:
-        comment = split_punctuation(comment, abbrevs)
+        comment = split_punctuation(comment)
     if 5 in steps:
         comment = split_clitics(comment)
     if 6 in steps:
@@ -66,8 +73,10 @@ def preproc1(comment, steps=range(1, 11)):
         if 8 not in steps:
             comment = remove_sd(comment, st_words)
     if 8 in steps:
-        if 6 in steps in steps:
+        if 6 in steps:
             comment = modComm_8
+            if 7 in steps:
+                comment = remove_sd(modComm_8, st_words)
         else:
             modComm_6, modComm_8 = spacy_support(comment)
             if 7 in steps:
@@ -104,20 +113,23 @@ def replace_html_code(comment):
 remove urls
 '''
 def remove_urls(comment):
-    pattern = re.compile(r'(http[^\s]*|www[^\s]*)',flags=re.I)
-    comment = re.sub(pattern, '', comment)
+    comment = re.sub(url_parrtern, '', comment)
     return comment
+
+
 
 
 '''
 split_punctuation
+r"(\b)(" + "|".join(abbrevs) + r")"
+r"(\w+)([{}]+)(\s+|$|\w+)".format(punctuation)
 '''
 
-def split_punctuation(comment, abbrevs):
+def split_punctuation(comment):
     # change the period of abbrev to magic=xeq this is bad
-    comment = re.sub(r"(\b)(" + "|".join(abbrevs) + r")",
+    comment = re.sub(pun_parrten_1,
                      lambda m: m.group(1) + m.group(2).replace(".", "xeqxeq"), comment)
-    comment = re.sub(r"(\w+)([{}]+)(\s+|$|\w+)".format(punctuation), '\g<1> \g<2> \g<3>', comment).replace("xeqxeq", ".")
+    comment = re.sub(pun_parrten_2, '\g<1> \g<2> \g<3>', comment).replace("xeqxeq", ".")
     comment = re.sub(r"\s+", ' ', comment)
     return comment
 
@@ -140,7 +152,7 @@ def split_clitics(comment):
 
     pattern = re.compile(r"\b(\w+)(s\')(\w+|\s+)\b", flags=re.I)
     comment = re.sub(pattern,
-                     lambda m: m.group(1)+m.group(2)[0]+ " "+m.group(2)[1] + m.group(3), comment)
+                     lambda m: m.group(1)+m.group(2)[0] + " "+m.group(2)[1] + m.group(3), comment)
     comment = re.sub(r"\s+", ' ', comment)
     return comment
 
@@ -205,7 +217,7 @@ def main(args):
     allOutput = []
     thread_pool = ThreadPool(4)
 
-    for subdir, dirs, files in os.walk(indir):
+    for subdir, dirs, files in os.walk(dev_dir):
         for file in files:
             fullFile = os.path.join(subdir, file)
             print("Processing " + fullFile)
@@ -218,8 +230,9 @@ def main(args):
             data = data[start_index:]
             data = [data[i] for i in random.sample(range(len(data)), int(args.max))]
             print("new data size %s" % len(data))
-            allOutput.append(thread_pool.apply_async(process_wrapper, (data,file)))
-
+            #using 10 threads for each file
+            for p in range(0, len(data), 1000):
+                allOutput.append(thread_pool.apply_async(process_wrapper, (data[p:p+1000],file)))
     results=[]
     for r in allOutput:
         results += r.get()
@@ -244,6 +257,6 @@ if __name__ == "__main__":
     if (int(args.max) > 200272):
         print("Error: If you want to read more than 200,272 comments per file, you have to read them all.")
         sys.exit(1)
-
+    t_0 = time.time()
     main(args)
-    print(time.clock())
+    print(time.time()-t_0)

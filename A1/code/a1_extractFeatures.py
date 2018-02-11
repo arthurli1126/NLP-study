@@ -77,11 +77,19 @@ def extract1( comment ):
     for i in comment:
         if len(i) <2:
             continue
+
+        if './.' in i:
+            no_of_sen += 1
+            no_of_pun +=1
+            no_of_token += 1
+            #todo: AL need to rethink about it when have time
+            continue
+
         #some feature need to calculate regardless of words
         len_comment += len(i.split('/')[0]) if len(i.split('/')[0]) >0 else 1
         no_of_token += 1
         #Todo just figured need to spit word anyways might need to change it in the future
-        word = i.split('/')[0] if  i.split('/')[0]=='' else "/"
+        word = i.split('/')[0] if  i.split('/')[0]!='' else "/"
         #place holder incase key not found
         bng_norm = bng_dict.get(word,'')
         rw_norm = rw_dict.get(word, '')
@@ -89,21 +97,15 @@ def extract1( comment ):
         # print(word)
         # print(bng_norm)
         # print(rw_norm)
-        if '' not in bng_norm:
+        if type(bng_norm)!=str:
             aoa.append(float(bng_norm[0]))
             img.append(float(bng_norm[1]))
             fam.append(float(bng_norm[2]))
-        if '' not in rw_norm:
+        if type(rw_norm)!=str:
             vmean.append(float(rw_norm[0]))
             amean.append(float(rw_norm[1]))
             dmean.append(float(rw_norm[2]))
 
-        if './.' in i:
-            no_of_sen += 1
-            no_of_pun +=1
-            len_comment -= len(i.split('/')[0])
-            #todo: AL need to rethink about it when have time
-            continue
 
         #need to think a better way but should be enough for now
         #Todo need to change the code structure loop over token instead of steps

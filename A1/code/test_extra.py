@@ -96,7 +96,7 @@ class test_extrac(unittest.TestCase):
         self.assertEqual(extract1(comment)[11], result[11])
 
     def test_slang(self):
-        comment = 'smh fwb lmfao lmao lms tbh rofl wtf bff b bff'
+        comment = 'smh fwb lmfao pp lmao lms tbh rofl wtf bff bff lol'
         result = np.zeros(173)
         result[12] = 11.0
         self.assertIsInstance(extract1(comment), np.ndarray)

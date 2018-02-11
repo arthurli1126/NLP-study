@@ -51,6 +51,7 @@ class A1PreprocTestCase(unittest.TestCase):
         self.assertEqual(preproc1('sss st. louis  \n  \r  was     nice.', steps=[4]), 'sss st. louis was nice . ')
         self.assertEqual(preproc1('ss!!!!!!!!!', steps=[4]), 'ss !!!!!!!!! ')
         self.assertEqual(preproc1('ss!!!!!!!!!sdsd', steps=[4]), 'ss !!!!!!!!! sdsd')
+        self.assertEqual(preproc1('ss/sdsd', steps=[4]), 'ss / sdsd')
     '''
     c_list = ['\'s',
               '\'re',
