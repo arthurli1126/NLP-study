@@ -27,7 +27,7 @@ tp = [i.replace("\n","") for i in tp]
 dev_slang_path = '../Wordlists/Slang'
 slang_file = open(dev_slang_path)
 slang = slang_file.readlines()
-slang = [i.replace("\n","") for i in slang]
+slang = [i.replace("\n","") for i in slang if len(i)>0]
 #BNG_path = '/u/cs401/Wordlists/BristolNorms+GilhoolyLogie.csv'
 dev_BNG_path = '../Wordlists/BristolNorms+GilhoolyLogie.csv'
 BNG_file = csv.reader(open(dev_BNG_path))
@@ -78,10 +78,10 @@ def extract1( comment ):
         if len(i) <2:
             continue
         #some feature need to calculate regardless of words
-        len_comment += len(i.split('/')[0])
+        len_comment += len(i.split('/')[0]) if len(i.split('/')[0]) >0 else 1
         no_of_token += 1
         #Todo just figured need to spit word anyways might need to change it in the future
-        word = i.split('/')[0]
+        word = i.split('/')[0] if  i.split('/')[0]=='' else "/"
         #place holder incase key not found
         bng_norm = bng_dict.get(word,'')
         rw_norm = rw_dict.get(word, '')
@@ -147,7 +147,7 @@ def extract1( comment ):
             feats[10] +=1
         if any(w in i for w in wh):
             feats[11] +=1
-        if any(sl in i for sl in slang):
+        if any(sl== i for sl in slang):
             feats[12] +=1
         if len(i.split('/')[0])>=3 and i.split('/')[0].isupper():
             feats[13] +=1
