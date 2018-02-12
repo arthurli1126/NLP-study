@@ -10,22 +10,22 @@ import spacy
 from multiprocessing.pool import ThreadPool
 import time
 
-# indir = '/u/cs401/A1/data/';
-# sw_path = '/u/cs401/Wordlists/StopWords';
-# ab_path = '/u/cs401/Wordlists/abbrev.english';
-dev_dir = '../data/';
-dev_sw_path = '../Wordlists/StopWords';
-dev_ab_path = '../Wordlists/abbrev.english';
+indir = '/u/cs401/A1/data/';
+sw_path = '/u/cs401/Wordlists/StopWords';
+ab_path = '/u/cs401/Wordlists/abbrev.english';
+# dev_dir = '../data/';
+# dev_sw_path = '../Wordlists/StopWords';
+# dev_ab_path = '../Wordlists/abbrev.english';
 
 # load abbrevs file
-abbrev_file = open(dev_ab_path)
-#abbrev_file = open(ab_path)
+# abbrev_file = open(dev_ab_path)
+abbrev_file = open(ab_path)
 abbrevs = abbrev_file.readlines()
 abbrev_file.close()
 abbrevs = [i.replace("\n", "") for i in abbrevs]
 # load st_words file
-st_words_file = open(dev_sw_path)
-#st_words_file = open(sw_path)
+# st_words_file = open(dev_sw_path)
+st_words_file = open(sw_path)
 st_words = st_words_file.readlines()
 st_words_file.close()
 st_words = [i.replace("\n", "") for i in st_words]
@@ -34,9 +34,9 @@ st_words = [i.replace("\n", "") for i in st_words]
 nlp = spacy.load('en', disable=['parse', 'ner'])
 punctuation = re.sub(r"[']", '', string.punctuation)
 
-#regex parrtern
-url_parrtern = re.compile(r'(http[^\s]*|www[^\s]*)',flags=re.I)
-pun_parrten_1 =re.compile(r"(\b)(" + "|".join(abbrevs) + r")")
+# regex parrtern
+url_parrtern = re.compile(r'(http[^\s]*|www[^\s]*)', flags=re.I)
+pun_parrten_1 = re.compile(r"(\b)(" + "|".join(abbrevs) + r")")
 pun_parrten_2 = re.compile(r"(\w+)([{}]+)(\s+|$|\w+)".format(punctuation))
 
 
@@ -109,14 +109,15 @@ replace hmtl code with ascii
 def replace_html_code(comment):
     return html.unescape(comment)
 
+
 '''
 remove urls
 '''
+
+
 def remove_urls(comment):
     comment = re.sub(url_parrtern, '', comment)
     return comment
-
-
 
 
 '''
@@ -124,6 +125,7 @@ split_punctuation
 r"(\b)(" + "|".join(abbrevs) + r")"
 r"(\w+)([{}]+)(\s+|$|\w+)".format(punctuation)
 '''
+
 
 def split_punctuation(comment):
     # change the period of abbrev to magic=xeq this is bad
@@ -146,13 +148,13 @@ def split_clitics(comment):
               '\'em',
               'y\'',
               'Y\'']
-    pattern = re.compile(r'\b(\w*)(' + r"|".join(c_list) + r")(\w+|\s+)\b",flags=re.I)
+    pattern = re.compile(r'\b(\w*)(' + r"|".join(c_list) + r")(\w+|\s+)\b", flags=re.I)
     comment = re.sub(pattern,
-                     lambda m: m.group(1) + " " + m.group(2) + " " +m.group(3), comment)
+                     lambda m: m.group(1) + " " + m.group(2) + " " + m.group(3), comment)
 
     pattern = re.compile(r"\b(\w+)(s\')(\w+|\s+)\b", flags=re.I)
     comment = re.sub(pattern,
-                     lambda m: m.group(1)+m.group(2)[0] + " "+m.group(2)[1] + m.group(3), comment)
+                     lambda m: m.group(1) + m.group(2)[0] + " " + m.group(2)[1] + m.group(3), comment)
     comment = re.sub(r"\s+", ' ', comment)
     return comment
 
@@ -176,7 +178,7 @@ def spacy_support(comment):
 
 
 def remove_sd(comment, st_words):
-    pattern = re.compile(r"\b(" + r"|".join(st_words) + r")(\/\S*)?\b",flags=re.I)
+    pattern = re.compile(r"\b(" + r"|".join(st_words) + r")(\/\S*)?\b", flags=re.I)
     comment = re.sub(pattern, '', comment + ' ')
     comment = re.sub(r"\s+", ' ', comment)
     return comment
@@ -184,7 +186,7 @@ def remove_sd(comment, st_words):
 
 def add_newline_eos(comment):
     eos = ".?!"
-    return re.sub(r"(\s+)([{}]+/.+\s|[{}]+/.+$)".format(eos,eos), '\g<1>\g<2>\n', comment)
+    return re.sub(r"(\s+)([{}]+/.+\s|[{}]+/.+$)".format(eos, eos), '\g<1>\g<2>\n', comment)
 
 
 # this one is little tricky
@@ -209,7 +211,7 @@ def process_wrapper(data, file, steps=range(1, 11)):
         d["body"] = preproc1(d["body"], steps)
         comments.append(d)
         h += 1
-        print("{}:{}".format(file,h))
+        print("{}:{}".format(file, h))
     return comments
 
 
@@ -217,7 +219,7 @@ def main(args):
     allOutput = []
     thread_pool = ThreadPool(4)
 
-    for subdir, dirs, files in os.walk(dev_dir):
+    for subdir, dirs, files in os.walk(indir):
         for file in files:
             fullFile = os.path.join(subdir, file)
             print("Processing " + fullFile)
@@ -230,10 +232,9 @@ def main(args):
             data = data[start_index:]
             data = [data[i] for i in random.sample(range(len(data)), int(args.max))]
             print("new data size %s" % len(data))
-            #using 10 threads for each file
-            for p in range(0, len(data), 1000):
-                allOutput.append(thread_pool.apply_async(process_wrapper, (data[p:p+1000],file)))
-    results=[]
+            # using 1 thread for each file
+            allOutput.append(thread_pool.apply_async(process_wrapper, (data, file)))
+    results = []
     for r in allOutput:
         results += r.get()
 
@@ -259,4 +260,4 @@ if __name__ == "__main__":
         sys.exit(1)
     t_0 = time.time()
     main(args)
-    print(time.time()-t_0)
+    print(time.time() - t_0)

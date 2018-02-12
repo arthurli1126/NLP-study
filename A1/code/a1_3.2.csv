@@ -1,1 +1,2 @@
-0.3,0.3125,0.1625,0.25,0.2625
+0.278875,0.3155,0.322,0.332625,0.3435
+My expectation is the accuacy should be increased with more train data to fit the model. It matches with my expectation but with more training data available, the accuracy of the model does not seem increased significantly. For example, after 5k training data, the accuracy only increased less than 2% with more training data. One possible explanation is our model is too simple to explain the data well. For example, most of our features involves individual words analysis, but the depency among words should be also very import in building a language model. Another possible explannation is to see accuracy leap like from 1k to 5k, we will need to increase our training data size Exponentially.
