@@ -10,40 +10,40 @@ import sys
 '''
 Load supported file
 '''
-fp_path = '/u/cs401/Wordlists/First-person'
-fp_file = open(fp_path)
-# dev_fp_path = '../Wordlists/First-person'
-# fp_file = open(dev_fp_path)
+# fp_path = '/u/cs401/Wordlists/First-person'
+# fp_file = open(fp_path)
+dev_fp_path = '../Wordlists/First-person'
+fp_file = open(dev_fp_path)
 fp = fp_file.readlines()
 fp = [i.replace("\n", "") for i in fp]
-sp_path = '/u/cs401/Wordlists/Second-person'
-sp_file = open(sp_path)
-# dev_sp_path = '../Wordlists/Second-person'
-# sp_file = open(dev_sp_path)
+# sp_path = '/u/cs401/Wordlists/Second-person'
+# sp_file = open(sp_path)
+dev_sp_path = '../Wordlists/Second-person'
+sp_file = open(dev_sp_path)
 sp = sp_file.readlines()
 sp = [i.replace("\n", "") for i in sp]
-tp_path = '/u/cs401/Wordlists/Third-person'
-tp_file = open(tp_path)
-# dev_tp_path = '../Wordlists/Third-person'
-# tp_file = open(dev_tp_path)
+# tp_path = '/u/cs401/Wordlists/Third-person'
+# tp_file = open(tp_path)
+dev_tp_path = '../Wordlists/Third-person'
+tp_file = open(dev_tp_path)
 tp = tp_file.readlines()
 tp = [i.replace("\n", "") for i in tp]
-slang_path = '/u/cs401/Wordlists/Slang'
-slang_file = open(slang_path)
-# dev_slang_path = '../Wordlists/Slang'
-# slang_file = open(dev_slang_path)
+# slang_path = '/u/cs401/Wordlists/Slang'
+# slang_file = open(slang_path)
+dev_slang_path = '../Wordlists/Slang'
+slang_file = open(dev_slang_path)
 slang = slang_file.readlines()
 slang = [i.replace("\n", "") for i in slang if len(i) > 0]
-BNG_path = '/u/cs401/Wordlists/BristolNorms+GilhoolyLogie.csv'
-BNG_file = csv.reader(open(BNG_path))
-# dev_BNG_path = '../Wordlists/BristolNorms+GilhoolyLogie.csv'
-# BNG_file = csv.reader(open(dev_BNG_path))
+# BNG_path = '/u/cs401/Wordlists/BristolNorms+GilhoolyLogie.csv'
+# BNG_file = csv.reader(open(BNG_path))
+dev_BNG_path = '../Wordlists/BristolNorms+GilhoolyLogie.csv'
+BNG_file = csv.reader(open(dev_BNG_path))
 BNG = np.array([row for row in BNG_file][1:])
 bng_dict = dict(zip(BNG[:, 1], BNG[:, 3:6]))
-RW_path = '/u/cs401/Wordlists/Ratings_Warriner_et_al.csv'
-RW_file = csv.reader(open(RW_path))
-# dev_RW_path = '../Wordlists/Ratings_Warriner_et_al.csv'
-# RW_file = csv.reader(open(dev_RW_path))
+# RW_path = '/u/cs401/Wordlists/Ratings_Warriner_et_al.csv'
+# RW_file = csv.reader(open(RW_path))
+dev_RW_path = '../Wordlists/Ratings_Warriner_et_al.csv'
+RW_file = csv.reader(open(dev_RW_path))
 RW = np.array([row for row in RW_file][1:])
 rw_dict = dict(zip(RW[:, 1], RW[:, [2, 5, 8]]))
 
@@ -178,8 +178,8 @@ def extract1(comment):
 
 
 def liwc():
-    feats_path = '/u/cs401/A1/feats'
-    # dev_feats_path = '../feats'
+    #feats_path = '/u/cs401/A1/feats'
+    dev_feats_path = '../feats'
     aid_index = []
     cid_index = []
     lid_index = []
@@ -189,7 +189,7 @@ def liwc():
     center_feats = np.array([])
     left_feats = np.array([])
     right_feats = np.array([])
-    for subdir, dir, files in os.walk(feats_path):
+    for subdir, dir, files in os.walk(dev_feats_path):
         for file in files:
             if 'txt' in file:
                 full_file = open(os.path.join(subdir, file)).readlines()
@@ -248,7 +248,9 @@ def main(args):
             feats_ex[29:173] = find_liwc_feats(i['id'], lid_index, left_feats)
         if i['cat'] == 'Right':
             feats_ex[29:173] = find_liwc_feats(i['id'], rid_index, right_feats)
+        print(feats_ex[29:173])
         feats[data_index] = feats_ex
+
         data_index += 1
 
     np.savez_compressed(args.output, feats)

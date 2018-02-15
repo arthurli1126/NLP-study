@@ -248,6 +248,7 @@ def main(args):
             feats_ex[29:173] = find_liwc_feats(i['id'], lid_index, left_feats)
         if i['cat'] == 'Right':
             feats_ex[29:173] = find_liwc_feats(i['id'], rid_index, right_feats)
+        print(feats_ex[29:173])
         feats[data_index] = feats_ex
         data_index += 1
 
