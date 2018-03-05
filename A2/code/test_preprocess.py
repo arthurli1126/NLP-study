@@ -13,7 +13,7 @@ class preprocess_testcase(unittest.TestCase):
         self.assertEqual(pre("l'election","f"),"l' election")
 
     def test_leading_c_a(self):
-        self.assertEqual(pre("je t'a ime","f"),"je t' aime")
+        self.assertEqual(pre("je t'aime","f"),"je t' aime")
         
 
 

@@ -2,10 +2,13 @@ import re
 from functools import partial
 
 punctuation = ".,:;()+-<>="
-pun_pattern = re.compile(r"(\w*)((\w*)(\.|,|:|;|\(|\)|\+|-|<|>|=)(\s*))(\s*)")
+pun_pattern = re.compile(r"(\w*)((\w*)(\.|,|:|;|\(|\)|\+|-|<|>|=)(\s*))")
+fre_con = re.compile(r"(l'|je t'|j'|s'|c'|qu')(\w+)")
+spe_words = ["d\'abord", "d\'accord", "d\'ailleurs", "d\'habitude"]
 
-def sub_pun(match):
-    sec_part = match.group(3)
+
+
+
 
 def preprocess(in_sentence, language):
     """ 
@@ -21,14 +24,15 @@ def preprocess(in_sentence, language):
 	OUTPUT:
 	out_sentence: (string) the modified sentence
     """
-    # TODO: Implement Function
     out_sen = str
     if language =="e":
-        out_sen = pun_pattern.sub(lambda  m: m.group(1) + " " +
-                                    m.group(2) +
-                                    "" if m.group(3) == " " else " "
-                                    + m.group(3) ,in_sentence)
-    return out_sen
+        out_sen = pun_pattern.sub(lambda  m: m.group(1) + " " +m.group(2), in_sentence)
+
+    if language=="f":
+        out_sen = pun_pattern.sub(lambda m: m.group(1) + " " + m.group(2), in_sentence)
+        out_sen = fre_con.sub(lambda  m: m.group(1) + " " + m.group(2),out_sen)
+
+    return "SENTSTART " + out_sen +" SENTEND"
 
 
 
