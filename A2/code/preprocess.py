@@ -25,6 +25,8 @@ def preprocess(in_sentence, language):
 	out_sentence: (string) the modified sentence
     """
     out_sen = str
+    in_sentence = in_sentence.lower()
+
     if language =="e":
         out_sen = pun_pattern.sub(lambda  m: m.group(1) + " " +m.group(2), in_sentence)
 
