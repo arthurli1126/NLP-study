@@ -38,5 +38,5 @@ def preplexity(LM, test_dir, language, smoothing = False, delta = 0):
     return pp
 
 #test
-test_LM = lm_train("lm_train_testdir/", "e", "e_temp")
-print(preplexity(test_LM, "lm_train_testdir/", "e"))
+#test_LM = lm_train("../Hansard/Testing/", "e", "e_temp")
+print(preplexity(test_LM, "../Hansard/Testing/", "e"))
