@@ -47,7 +47,7 @@ def main():
     lme = pickle.load(open(fn_lme,"rb"))
     lmf = pickle.load(open(fn_lmf,"rb"))
     vocabSize = len(lme)
-    data_size = [100,1000,1500,3000]
+    data_size = [1000,10000,15000,30000]
     AMs = []
     for i in data_size:
         AMs.append(align_ibm1(train_dir, i, max_iter))
