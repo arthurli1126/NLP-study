@@ -9,13 +9,26 @@ from BLEU_score import *
 import pickle
 import os
 
-train_dir = "../Hansard/Training/"
-test_dir = "../Hansard/Testing/"
+#dev env
+# train_dir = "../Hansard/Training/"
+# test_dir = "../Hansard/Testing/"
+# fn_lme="./hansard_eng.pickle"
+# fn_lmf="./hansard_fre.pickle"
+# testF="../Hansard/Testing/Task5.f"
+# teste="../Hansard/Testing/Task5.e"
+# google_teste="../Hansard/Testing/Task5.google.e"
+
+#prod env
+
+train_dir = '/u/cs401/A2_SMT/data/Hansard/Training'
+test_dir = '/u/cs401/A2_SMT/data/Hansard/Testing'
 fn_lme="./hansard_eng.pickle"
 fn_lmf="./hansard_fre.pickle"
-testF="../Hansard/Testing/Task5.f"
-teste="../Hansard/Testing/Task5.e"
-google_teste="../Hansard/Testing/Task5.google.e"
+testF= '/u/cs401/A2_SMT/data/Hansard/Testing/Task5.f'
+teste= '/u/cs401/A2_SMT/data/Hansard/Testing/Task5.e'
+google_teste='/u/cs401/A2_SMT/data/Hansard/Testing/Task5.google.e'
+
+
 eval_log = "Task5"
 max_iter =10
 
