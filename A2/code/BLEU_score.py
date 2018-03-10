@@ -5,11 +5,11 @@ import math
 def ref_gram_count(refs):
     ref_g_count = {}
     for ref in refs:
-        print("processing ref:{}".format(ref))
+        #print("processing ref:{}".format(ref))
         words = ref.split()[1:-1]
         words_len = len(words)
         for i in range(len(words)):
-            print(1)
+            #print(1)
             first = words[i]
             if first not in ref_g_count.keys():
                 ref_g_count[first] = {}
@@ -22,7 +22,7 @@ def ref_gram_count(refs):
             third = words[i+2]
             if third not in ref_g_count[first][second].keys():
                 ref_g_count[first][second][third] = 1
-            print(2)
+            #print(2)
     return ref_g_count
 
 
@@ -98,7 +98,7 @@ def BLEU_score(candidate, references, n):
     bi_precison = ((n>1)*bigram_count/(num_can_words-1)) + (n<=1)
     tri_precison = ((n>2)*trigram_count/(num_can_words-2)) + (n<=2)
 
-    print("bp:{}, uni_p:{}, bi_p:{}, tri_p:{}".format(bp,uni_precision,bi_precison,tri_precison))
+    #print("bp:{}, uni_p:{}, bi_p:{}, tri_p:{}".format(bp,uni_precision,bi_precison,tri_precison))
     bleu_score = bp* ((uni_precision*bi_precison*tri_precison)**(1/n))
 
     return bleu_score

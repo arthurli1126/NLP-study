@@ -90,7 +90,7 @@ def initialize(eng, fre):
             eng_word = eng_sen[j]
             for k in range(1,len(fre_sen)-1):
                 fre_word= fre_sen[k]
-                print("processing eng:{}, fre:{}".format(eng_word,fre_word))
+                #print("processing eng:{}, fre:{}".format(eng_word,fre_word))
                 if eng_word not in AM.keys():
                     #print(1)
                     AM[eng_word] ={fre_word:1}
