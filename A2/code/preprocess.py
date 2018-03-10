@@ -2,7 +2,8 @@ import re
 from functools import partial
 
 punctuation = ".,:;()+-<>="
-pun_pattern = re.compile(r"(\w*)((\w*)(\.|,|:|;|\(|\)|\+|-|<|>|=)(\s*))")
+#pun_pattern = re.compile(r"(\w*)((\w*)(\.|,|:|;|\(|\)|\+|-|<|>|=)(\s*))")
+pun_pattern = re.compile(r"(\w*)(\.|,|:|;|\(|\)|\+|-|<|>|=|\'\')(\w*)")
 fre_con = re.compile(r"(l'|je t'|j'|s'|c'|qu')(\w+)")
 spe_words = ["d\'abord", "d\'accord", "d\'ailleurs", "d\'habitude"]
 
@@ -28,12 +29,17 @@ def preprocess(in_sentence, language):
     in_sentence = in_sentence.lower()
 
     if language =="e":
-        out_sen = pun_pattern.sub(lambda  m: m.group(1) + " " +m.group(2), in_sentence)
+        out_sen = ' '.join(
+            pun_pattern.sub(
+                lambda  m: m.group(1) + " " +m.group(2) + " "+ m.group(3), in_sentence).split())
 
     if language=="f":
-        out_sen = pun_pattern.sub(lambda m: m.group(1) + " " + m.group(2), in_sentence)
+        out_sen = ' '.join(
+            pun_pattern.sub(
+                lambda  m: m.group(1) + " " +m.group(2) + " "+ m.group(3), in_sentence).split())
         out_sen = fre_con.sub(lambda  m: m.group(1) + " " + m.group(2),out_sen)
 
+    #return out_sen
     return "SENTSTART " + out_sen +" SENTEND"
 
 

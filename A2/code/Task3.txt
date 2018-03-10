@@ -1,0 +1,30 @@
+Perplexity :
+
+English:
+
+MLE       	21.16735851098141
+delta=0.2  	77.75676862099954
+delta=0.4	98.42743143994727
+delta=0.6   115.16482814119843
+Delta＝0.8	129.85307254974018
+delta =1 	143.22289544055013
+
+French:
+
+MLE 		21.358512305029574
+delta=0.2	84.85549279388785
+delta=0.4	110.37999198784007
+delta=0.6	131.36598660331086
+delta=0.8	149.99078331450562
+delta=1	167.09119476793606
+
+Analysis:
+
+From above we can see that perplexity increase monotonically when delta increases.
+Since perplexity can be used to measure the usefulness of language model in terms of predicting test data,
+with delta increase the language model become weaker. That is actually expected,
+since adding delta smoothing is essentially adding probability to those unseen events that meanwhile flatten the overall probability of the model.
+So overall by adding delta smoothing, we end up with a weaker model. Although by adding delta,
+the model does account for those unseen events,
+which may in some case give us a better model, just like the sun raise problem, give large sample of data,
+we will need to account for those events have not occured before.

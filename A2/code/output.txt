@@ -1,0 +1,1012 @@
+data_dir : ../Hansard/Training/
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.015.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.016.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.017.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.018.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.019.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.020.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.021.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.022.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.023.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.024.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.025.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.026.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.027.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.028.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.029.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.030.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.031.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.032.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.033.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.034.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.035.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.036.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.037.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.038.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.039.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.040.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.041.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.042.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.043.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.044.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.045.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.046.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.047.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.048.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.049.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.049a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.050.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.051.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.052.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.053.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.054.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.055.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.056.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.057.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.058.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.059.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.060.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.061.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.062.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.063.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.064.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.065.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.066.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.067.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.068.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.069.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.070.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.071.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.072.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.073.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.074.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.075.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.076.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.077.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.078.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.079.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.080.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.081.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.082.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.083.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.084.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.085.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.086.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.087.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.088.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.089.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.090.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.091.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.092.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.093.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.094.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.095.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.096.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.097.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.098.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.099.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.100.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.101.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.102.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.103.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.104.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.105.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.106.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.107.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.108.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.109.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.110.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.111.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.112.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.113.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.114.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.115.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.116.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.117.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.118.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.118a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.119.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.120.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.121.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.121a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.122.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.123.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.124.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.125.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.126.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.127.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.128.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.129.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.130.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.131.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.132.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.133.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.134.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.135.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.136.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.137.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.138.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.139.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.140.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.141.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.142.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.143.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.144.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.145.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.146.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.147.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.148.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.149.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.150.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.151.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.152.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.153.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.154.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.155.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.156.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.157.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.158.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.159.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.160.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.161.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.162.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.163.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.164.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.165.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.166.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.167.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.168.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.169.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.170.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.170a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.171.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.172.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.173.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.174.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.175.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.176.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.177.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.178.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.179.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.180.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.181.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.182.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.183.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.184.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.185.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.186.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.187.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.188.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.189.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.190.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.191.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.192.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.193.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.194.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.195.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.196.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.197.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.198.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.199.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.200.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.201.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.202.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.202a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.202b.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.203.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.204.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.205.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.205a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.206.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.207.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.208.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.209.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.210.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.211.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.212.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.213.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.214.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.215.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.216.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.217.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.218.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.219.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.220.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.221.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.222.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.223.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.224.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.225.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.226.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.227.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.228.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.229.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.230.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.231.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.232.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.233.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.234.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.235.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.236.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.237.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.238.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.239.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.240.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.241.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.242.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.243.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.243a.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.243b.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-09-22.001.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-09-23.002.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-09-30.003.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-01.004.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-02.005.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-07.006.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-08.007.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-09.008.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-21.009.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-22.010.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-23.011.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-28.012.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-29.013.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-10-30.014.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-04.015.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-05.016.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-06.017.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-18.018.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-19.019.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-20.020.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-25.021.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-26.022.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-11-27.023.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-02.024.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-03.025.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-04.026.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-08.027.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-09.028.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-10.029.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-11.030.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-12.031.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-15.032.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-16.033.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-17.034.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1997-12-18.035.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-10.036.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-11.037.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-12.038.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-17.039.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-18.040.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-19.041.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-24.042.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-25.043.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-02-26.044.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-17.045.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-18.046.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-19.047.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-24.048.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-25.049.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-26.050.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-03-31.051.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-04-01.052.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-04-02.053.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-04-28.054.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-04-29.055.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-04-30.056.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-05-05.057.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-05-06.058.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-05-07.059.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-05-12.060.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-05-13.061.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-05-14.062.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-12-03.100.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-12-07.101.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-12-08.102.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-12-09.103.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1998-12-10.104.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-02.105.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-03.106.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-04.107.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-09.108.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-10.109.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-11.110.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-16.111.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-17.112.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-02-18.113.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-02.114.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-03.115.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-04.116.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-09.117.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-10.118.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-11.119.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-16.120.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-17.121.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-18.122.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-23.123.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-24.124.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-03-25.125.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-13.126.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-14.127.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-15.128.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-20.129.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-21.130.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-22.131.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-27.132.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-28.133.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-04-29.134.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-04.135.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-05.136.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-06.137.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-11.138.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-12.139.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-13.140.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-05-31.141.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-01.142.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-02.143.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-03.144.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-07.145.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-09.147.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-10.148.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-14.149.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-15.150.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-16.151.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-06-17.152.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-09-07.153.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-09-08.154.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-09-09.155.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-09-10.156.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-09-13.157.e
+Peprocessing ../Hansard/Training/hansard.36.1.senate.debates.1999-09-14.158.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-10-12.01.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-10-13.02.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-10-14.03.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-02.04.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-03.05.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-04.06.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-16.07.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-17.08.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-18.09.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-23.10.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-24.11.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-25.12.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-11-30.13.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-01.14.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-02.15.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-06.16.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-07.17.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-08.18.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-09.19.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-13.20.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-14.21.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-15.22.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.1999-12-16.23.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-08.24.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-09.25.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-10.26.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-15.27.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-16.28.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-17.29.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-22.30.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-23.31.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-24.32.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-02-29.33.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-01.34.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-02.35.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-21.36.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-22.37.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-23.38.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-28.39.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-29.40.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-03-30.41.e
+Peprocessing ../Hansard/Training/hansard.36.2.senate.debates.2000-04-04.42.e
+data_dir : ../Hansard/Training/
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.f
+data_dir : ../Hansard/Training/
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.f
+data_dir : ../Hansard/Training/
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.015.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.016.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.017.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.018.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.015.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.016.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.017.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.018.f
+data_dir : ../Hansard/Training/
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.015.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.016.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.017.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.018.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.019.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.020.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.021.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.022.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.023.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.024.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.025.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.026.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.027.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.028.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.029.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.030.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.031.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.032.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.033.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.034.e
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.001.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.002.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.003.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.004.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.005.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.006.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.007.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.008.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.009.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.010.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.011.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.012.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.013.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.014.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.015.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.016.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.017.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.018.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.019.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.020.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.021.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.022.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.023.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.024.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.025.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.026.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.027.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.028.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.029.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.030.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.031.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.032.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.033.f
+Peprocessing ../Hansard/Training/hansard.36.1.house.debates.034.f
+Peprocessing ../Hansard/Testing/Task5.f
+Peprocessing ../Hansard/Testing/Task5.e
+Peprocessing ../Hansard/Testing/Task5.google.e
+processing:SENTSTART dans le monde reel , il n'y a rien de mal a cela . SENTEND
+ref1:SENTSTART in the real world there is nothing wrong with that . SENTEND ref2:SENTSTART in the real world , there is nothing wrong with that . SENTEND
+AM0 translation:SENTSTART guide the world UNK , he recognition has nothing de domestic has consultation . SENTEND
+1 bleu:0.4375
+2 bleu:0.1707825127659933
+3 bleu:0.0
+AM1 translation:SENTSTART into femmes world name , he haven't has nothing de badly has allows . SENTEND
+1 bleu:0.375
+2 bleu:0.15811388300841897
+3 bleu:0.0
+AM2 translation:SENTSTART into right world real , he haven't has nothing de badly has overlap . SENTEND
+1 bleu:0.4375
+2 bleu:0.1707825127659933
+3 bleu:0.0
+AM3 translation:SENTSTART hedge right world real , he haven't has nothing de badly has cheek . SENTEND
+1 bleu:0.4375
+2 bleu:0.1707825127659933
+3 bleu:0.0
+processing:SENTSTART cela vaut pour tous les deputes . SENTEND
+ref1:SENTSTART that is true for every member of parliament . SENTEND ref2:SENTSTART this applies to all deputies . SENTEND
+AM0 translation:SENTSTART consultation UNK building all action members . SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.23570226039551584
+3 bleu:0.0
+AM1 translation:SENTSTART allows worth sum all business members . SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.23570226039551584
+3 bleu:0.0
+AM2 translation:SENTSTART overlap worth tape all boats members . SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.23570226039551584
+3 bleu:0.0
+AM3 translation:SENTSTART cheek worth diefenbaker all awards members . SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.23570226039551584
+3 bleu:0.0
+processing:SENTSTART je ne pense pas que ce soit la notre objectif . SENTEND
+ref1:SENTSTART i would think this is not at all what we want to do here . SENTEND ref2:SENTSTART i do not think it's our goal . SENTEND
+AM0 translation:SENTSTART i cannot wrap not than what her gone our hidden . SENTEND
+1 bleu:0.5384615384615384
+2 bleu:0.299572344757639
+3 bleu:0.0
+AM1 translation:SENTSTART i cannot disillusioned not only what renew court our objective . SENTEND
+1 bleu:0.5384615384615384
+2 bleu:0.299572344757639
+3 bleu:0.0
+AM2 translation:SENTSTART i cannot disillusioned not arrest what reprehensible la our objective . SENTEND
+1 bleu:0.5384615384615384
+2 bleu:0.299572344757639
+3 bleu:0.0
+AM3 translation:SENTSTART i wrist think not bless unlikely admittedly la our objective . SENTEND
+1 bleu:0.5384615384615384
+2 bleu:0.299572344757639
+3 bleu:0.0
+processing:SENTSTART que tous ceux qui appuient la motion veuillent bien dire oui . SENTEND
+ref1:SENTSTART all those in favour of the motion will please say yea . SENTEND ref2:SENTSTART all those in favor will please say yea . SENTEND
+AM0 translation:SENTSTART than all represent who motion? gone motion UNK well share yes . SENTEND
+1 bleu:0.35714285714285715
+2 bleu:0.16574838603294897
+3 bleu:0.0
+AM1 translation:SENTSTART only all protects who proposed? court motion yea well say yes . SENTEND
+1 bleu:0.5
+2 bleu:0.19611613513818404
+3 bleu:0.0
+AM2 translation:SENTSTART arrest all protects who proposed? la motion please well say yes . SENTEND
+1 bleu:0.5
+2 bleu:0.19611613513818404
+3 bleu:0.0
+AM3 translation:SENTSTART bless all namely who promoting la motion yea well say yes . SENTEND
+1 bleu:0.5
+2 bleu:0.19611613513818404
+3 bleu:0.0
+processing:SENTSTART le bonne nouvelle est que postes canada est tout ouie . SENTEND
+ref1:SENTSTART the good news is that canada post is listening . SENTEND ref2:SENTSTART the good news is that canada post is all ears . SENTEND
+AM0 translation:SENTSTART the UNK new is than UNK canada is else UNK . SENTEND
+1 bleu:0.5384615384615384
+2 bleu:0.299572344757639
+3 bleu:0.0
+AM1 translation:SENTSTART femmes wise fresh east only twice canada east mathematical UNK . SENTEND
+1 bleu:0.3076923076923077
+2 bleu:0.16012815380508713
+3 bleu:0.0
+AM2 translation:SENTSTART right wise reintroduction east arrest post canada east mathematical UNK . SENTEND
+1 bleu:0.38461538461538464
+2 bleu:0.17902871850985821
+3 bleu:0.0
+AM3 translation:SENTSTART right good reintroduction east bless stations? canada east mathematical UNK . SENTEND
+1 bleu:0.38461538461538464
+2 bleu:0.17902871850985821
+3 bleu:0.0
+processing:SENTSTART la question se pose donc , pourquoi? SENTEND
+ref1:SENTSTART we have to ask why . SENTEND ref2:SENTSTART the question arises , why? SENTEND
+AM0 translation:SENTSTART gone question some asked that's , UNK SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.0
+3 bleu:0.0
+AM1 translation:SENTSTART court question error distraught therefore , program? SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.0
+3 bleu:0.0
+AM2 translation:SENTSTART la question brag distraught therefore , reason? SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.0
+3 bleu:0.0
+AM3 translation:SENTSTART la question contradicting plumber therefore , reason? SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.0
+3 bleu:0.0
+processing:SENTSTART les deputes liberaux sont nombreux a representer des circonscription rurales . SENTEND
+ref1:SENTSTART many liberal members come from rural ridings . SENTEND ref2:SENTSTART the liberal deputies are many represent a rural constituency . SENTEND
+AM0 translation:SENTSTART action members liberals vulnerable creative has representing add riding UNK . SENTEND
+1 bleu:0.3076923076923077
+2 bleu:0.16012815380508713
+3 bleu:0.0
+AM1 translation:SENTSTART business members liberals are participating has politics? des riding rural . SENTEND
+1 bleu:0.46153846153846156
+2 bleu:0.19611613513818404
+3 bleu:0.0
+AM2 translation:SENTSTART boats members liberals evidence? abundant has politics? des riding rural . SENTEND
+1 bleu:0.38461538461538464
+2 bleu:0.17902871850985821
+3 bleu:0.0
+AM3 translation:SENTSTART awards members liberals burned? abundant has represent des riding rural . SENTEND
+1 bleu:0.46153846153846156
+2 bleu:0.19611613513818404
+3 bleu:0.0
+processing:SENTSTART nous vivons dans une democratie . SENTEND
+ref1:SENTSTART we live in a democracy . SENTEND ref2:SENTSTART we live in a democracy . SENTEND
+AM0 translation:SENTSTART we UNK guide greatest UNK . SENTEND
+1 bleu:0.5
+2 bleu:0.3779644730092272
+3 bleu:0.0
+AM1 translation:SENTSTART we thriving into reassigned democracy . SENTEND
+1 bleu:0.625
+2 bleu:0.5175491695067657
+3 bleu:0.354745852992596
+AM2 translation:SENTSTART we thriving into smoke democracy . SENTEND
+1 bleu:0.625
+2 bleu:0.5175491695067657
+3 bleu:0.354745852992596
+AM3 translation:SENTSTART we thriving hedge reassigned democracy . SENTEND
+1 bleu:0.625
+2 bleu:0.5175491695067657
+3 bleu:0.354745852992596
+processing:SENTSTART c' est le comble du ridicule SENTEND
+ref1:SENTSTART i cannot imagine anything so ridiculous . SENTEND ref2:SENTSTART it is the height of ridicule SENTEND
+AM0 translation:SENTSTART skeleton is the UNK du ridiculous SENTEND
+1 bleu:0.625
+2 bleu:0.2988071523335984
+3 bleu:0.0
+AM1 translation:SENTSTART campaigning east femmes UNK du ridiculous SENTEND
+1 bleu:0.375
+2 bleu:0.0
+3 bleu:0.0
+AM2 translation:SENTSTART campaigning east right motivation du ridiculous SENTEND
+1 bleu:0.375
+2 bleu:0.0
+3 bleu:0.0
+AM3 translation:SENTSTART campaigning east right fills du ridiculous SENTEND
+1 bleu:0.375
+2 bleu:0.0
+3 bleu:0.0
+processing:SENTSTART a mon avis , les non l' emportent SENTEND
+ref1:SENTSTART in my opinion the nays have it . SENTEND ref2:SENTSTART in my opinion , the nays SENTEND
+AM0 translation:SENTSTART has belong agree , action anyone education UNK SENTEND
+1 bleu:0.3
+2 bleu:0.0
+3 bleu:0.0
+AM1 translation:SENTSTART has father opinion , business nays institute yeas SENTEND
+1 bleu:0.5
+2 bleu:0.23570226039551584
+3 bleu:0.0
+AM2 translation:SENTSTART has colleague opinion , boats nay institute nays SENTEND
+1 bleu:0.5
+2 bleu:0.3333333333333333
+3 bleu:0.0
+AM3 translation:SENTSTART has colleague opinion , awards nays institute yeas SENTEND
+1 bleu:0.5
+2 bleu:0.23570226039551584
+3 bleu:0.0
+processing:SENTSTART tous les deputes de tous les partis connaissent bien ces programmes SENTEND
+ref1:SENTSTART all members of all parties are aware of these programs . SENTEND ref2:SENTSTART all mps from all parties are familiar with these programs SENTEND
+AM0 translation:SENTSTART all action members de all action reread export well these programs SENTEND
+1 bleu:0.5384615384615384
+2 bleu:0.3668996928526714
+3 bleu:0.2304450251853145
+AM1 translation:SENTSTART all business members de all business parties engineers well these programs SENTEND
+1 bleu:0.6153846153846154
+2 bleu:0.3922322702763681
+3 bleu:0.2409339418591454
+AM2 translation:SENTSTART all boats members de all boats parties freely well these programs SENTEND
+1 bleu:0.6153846153846154
+2 bleu:0.3922322702763681
+3 bleu:0.2409339418591454
+AM3 translation:SENTSTART all awards members de all awards parties engineers well these programs SENTEND
+1 bleu:0.6153846153846154
+2 bleu:0.3922322702763681
+3 bleu:0.2409339418591454
+processing:SENTSTART nous n'avons pas l' intention de mettre fin a cela . SENTEND
+ref1:SENTSTART we do not intend to stop that . SENTEND ref2:SENTSTART we do not intend to terminate it . SENTEND
+AM0 translation:SENTSTART we quarrel not education UNK de attempting left has consultation . SENTEND
+1 bleu:0.38461538461538464
+2 bleu:0.25318484177091666
+3 bleu:0.0
+AM1 translation:SENTSTART we quarrel not institute intend de donkin end has allows . SENTEND
+1 bleu:0.46153846153846156
+2 bleu:0.2773500981126146
+3 bleu:0.0
+AM2 translation:SENTSTART we quarrel not institute gloat de donkin stopped has overlap . SENTEND
+1 bleu:0.38461538461538464
+2 bleu:0.25318484177091666
+3 bleu:0.0
+AM3 translation:SENTSTART we quarrel not institute intend de weight end has cheek . SENTEND
+1 bleu:0.46153846153846156
+2 bleu:0.2773500981126146
+3 bleu:0.0
+processing:SENTSTART tachons d'honorer nos engagements de kyoto . SENTEND
+ref1:SENTSTART let us meet our kyoto commitments . SENTEND ref2:SENTSTART let us try to honor our kyoto commitments . SENTEND
+AM0 translation:SENTSTART UNK UNK our UNK de UNK . SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.23570226039551584
+3 bleu:0.0
+AM1 translation:SENTSTART UNK UNK our commitments de UNK . SENTEND
+1 bleu:0.5555555555555556
+2 bleu:0.26352313834736496
+3 bleu:0.0
+AM2 translation:SENTSTART UNK UNK our commitments de UNK . SENTEND
+1 bleu:0.5555555555555556
+2 bleu:0.26352313834736496
+3 bleu:0.0
+AM3 translation:SENTSTART UNK fulfill nos commitments de kyoto . SENTEND
+1 bleu:0.5555555555555556
+2 bleu:0.26352313834736496
+3 bleu:0.0
+processing:SENTSTART le ministre des finances a sabre a tour de bras dans les transferts aux provinces . SENTEND
+ref1:SENTSTART the minister of finance has made deep cuts to provincial transfers . SENTEND ref2:SENTSTART the finance minister saber vengeance in transfers to the provinces . SENTEND
+AM0 translation:SENTSTART the minister add finance has UNK has ballot de UNK guide action UNK needs provinces . SENTEND
+1 bleu:0.5
+2 bleu:0.3834824944236852
+3 bleu:0.26391679799450024
+AM1 translation:SENTSTART femmes minister des finance has gut has ballot de michelle into business transfers palliative provinces . SENTEND
+1 bleu:0.5
+2 bleu:0.2970442628930023
+3 bleu:0.1766746006576983
+AM2 translation:SENTSTART right minister des finance has gut has turn de bras into boats transfer $46 provinces . SENTEND
+1 bleu:0.4444444444444444
+2 bleu:0.28005601680560194
+3 bleu:0.16987257792186555
+AM3 translation:SENTSTART right minister des finance has gut has ballot de bras hedge awards transfers responding provinces . SENTEND
+1 bleu:0.5
+2 bleu:0.2970442628930023
+3 bleu:0.1766746006576983
+processing:SENTSTART mais laissons cela et entrons dans le coeur du debat . SENTEND
+ref1:SENTSTART let us get on with it and continue to engage in debate . SENTEND ref2:SENTSTART but let's leave that and move into the heart of the debate . SENTEND
+AM0 translation:SENTSTART but UNK consultation and UNK guide the bottom du debate . SENTEND
+1 bleu:0.4489438789635587
+2 bleu:0.3059036895568022
+3 bleu:0.19213421220416443
+AM1 translation:SENTSTART but frivolous allows and substance into femmes heart du debate . SENTEND
+1 bleu:0.5130787188154957
+2 bleu:0.3270247999061748
+3 bleu:0.20087937708841835
+AM2 translation:SENTSTART but frivolous overlap and substance into right heart du debate . SENTEND
+1 bleu:0.5130787188154957
+2 bleu:0.3270247999061748
+3 bleu:0.20087937708841835
+AM3 translation:SENTSTART but frivolous cheek and substance hedge right heart du debate . SENTEND
+1 bleu:0.4489438789635587
+2 bleu:0.3059036895568022
+3 bleu:0.19213421220416443
+processing:SENTSTART nous estimons qu' il est possible de faire mieux . SENTEND
+ref1:SENTSTART we are suggesting that we could pass a better bill . SENTEND ref2:SENTSTART we believe it is possible to do better . SENTEND
+AM0 translation:SENTSTART we UNK only he is makes de do smarter . SENTEND
+1 bleu:0.45241870901797976
+2 bleu:0.2728187465362941
+3 bleu:0.0
+AM1 translation:SENTSTART we pensionable qu'appelle he east possible de tries better . SENTEND
+1 bleu:0.45241870901797976
+2 bleu:0.3341333606398081
+3 bleu:0.21617397567323512
+AM2 translation:SENTSTART we pensionable qu'appelle he east possible de semantic better . SENTEND
+1 bleu:0.45241870901797976
+2 bleu:0.3341333606398081
+3 bleu:0.21617397567323512
+AM3 translation:SENTSTART we foolhardy qu'appelle he east possible de person? better . SENTEND
+1 bleu:0.45241870901797976
+2 bleu:0.3341333606398081
+3 bleu:0.21617397567323512
+processing:SENTSTART c' est le plus pur style liberal . SENTEND
+ref1:SENTSTART this is reminiscent of the liberal way of doing things . SENTEND ref2:SENTSTART this is the style liberal . SENTEND
+AM0 translation:SENTSTART skeleton is the most UNK rhetoric liberal . SENTEND
+1 bleu:0.6
+2 bleu:0.4472135954999579
+3 bleu:0.2924017738212866
+AM1 translation:SENTSTART campaigning east femmes longer UNK imagery liberal . SENTEND
+1 bleu:0.4
+2 bleu:0.29814239699997197
+3 bleu:0.22314431669405652
+AM2 translation:SENTSTART campaigning east right longer whimsy imagery liberal . SENTEND
+1 bleu:0.4
+2 bleu:0.29814239699997197
+3 bleu:0.22314431669405652
+AM3 translation:SENTSTART campaigning east right longer whimsy imagery liberal . SENTEND
+1 bleu:0.4
+2 bleu:0.29814239699997197
+3 bleu:0.22314431669405652
+processing:SENTSTART nous y revoila , et le premier ministre va determiner qui est le president du conseil . SENTEND
+ref1:SENTSTART the prime minister will determine who the president of the council will be . SENTEND ref2:SENTSTART we'm back there , and the prime minister will determine who is the chairman of the board . SENTEND
+AM0 translation:SENTSTART we build UNK , and the prime minister established situations who is the speaker du offer . SENTEND
+1 bleu:0.5458739253896644
+2 bleu:0.44738928172627124
+3 bleu:0.354115683815482
+AM1 translation:SENTSTART we ago UNK , and femmes prime minister sadly determine who east femmes chairman du conseil . SENTEND
+1 bleu:0.4962490230815131
+2 bleu:0.3224558114525243
+3 bleu:0.0
+AM2 translation:SENTSTART we ago UNK , and right prime minister sadly determine who east right president du conseil . SENTEND
+1 bleu:0.4962490230815131
+2 bleu:0.3224558114525243
+3 bleu:0.0
+AM3 translation:SENTSTART we ago UNK , and right prime minister past? determine who east right president du council . SENTEND
+1 bleu:0.5458739253896644
+2 bleu:0.33819450819529356
+3 bleu:0.0
+processing:SENTSTART il est clair que cela constituerait un conflit d'interets . SENTEND
+ref1:SENTSTART clearly it is a conflict of interest situation . SENTEND ref2:SENTSTART clearly this would be a conflict of interest . SENTEND
+AM0 translation:SENTSTART he is UNK than consultation UNK a UNK UNK . SENTEND
+1 bleu:0.4166666666666667
+2 bleu:0.19462473604038075
+3 bleu:0.0
+AM1 translation:SENTSTART he east clear only allows UNK someone UNK payments . SENTEND
+1 bleu:0.25
+2 bleu:0.15075567228888181
+3 bleu:0.0
+AM2 translation:SENTSTART he east clear arrest overlap UNK someone UNK interest . SENTEND
+1 bleu:0.3333333333333333
+2 bleu:0.24618298195866548
+3 bleu:0.18232183586428963
+AM3 translation:SENTSTART he east clearer bless cheek signal troops UNK interest . SENTEND
+1 bleu:0.3333333333333333
+2 bleu:0.24618298195866548
+3 bleu:0.18232183586428963
+processing:SENTSTART nous nous rejouissons de ces nouvelles perspectives . SENTEND
+ref1:SENTSTART we welcome the opportunity . SENTEND ref2:SENTSTART we are looking forward to these new opportunities . SENTEND
+AM0 translation:SENTSTART we we solid de these news UNK . SENTEND
+1 bleu:0.5294981415507573
+2 bleu:0.32224230698268136
+3 bleu:0.0
+AM1 translation:SENTSTART we we celebrate de these news opportunities . SENTEND
+1 bleu:0.6177478318092168
+2 bleu:0.42628650308995375
+3 bleu:0.27164942443466905
+AM2 translation:SENTSTART we we celebrating de these news prospects . SENTEND
+1 bleu:0.5294981415507573
+2 bleu:0.32224230698268136
+3 bleu:0.0
+AM3 translation:SENTSTART we we celebrating de these news prospects . SENTEND
+1 bleu:0.5294981415507573
+2 bleu:0.32224230698268136
+3 bleu:0.0
+processing:SENTSTART je declare la motion rejetee . SENTEND
+ref1:SENTSTART i declare the motion lost . SENTEND ref2:SENTSTART i declare the motion rejected . SENTEND
+AM0 translation:SENTSTART i beginning gone motion UNK . SENTEND
+1 bleu:0.625
+2 bleu:0.4225771273642583
+3 bleu:0.0
+AM1 translation:SENTSTART i declare court motion defeated . SENTEND
+1 bleu:0.75
+2 bleu:0.5669467095138409
+3 bleu:0.3769737205645769
+AM2 translation:SENTSTART i declare la motion defeated . SENTEND
+1 bleu:0.75
+2 bleu:0.5669467095138409
+3 bleu:0.3769737205645769
+AM3 translation:SENTSTART i declare la motion defeated . SENTEND
+1 bleu:0.75
+2 bleu:0.5669467095138409
+3 bleu:0.3769737205645769
+processing:SENTSTART et plus de cinq deputes s' etant leves : SENTEND
+ref1:SENTSTART and more than five members having risen : SENTEND ref2:SENTSTART and more than five deputies are being leves : SENTEND
+AM0 translation:SENTSTART and most de five members adjourn returned UNK : SENTEND
+1 bleu:0.5454545454545454
+2 bleu:0.4045199174779452
+3 bleu:0.0
+AM1 translation:SENTSTART and longer de five members deeper risen risen : SENTEND
+1 bleu:0.7272727272727273
+2 bleu:0.5393598899705937
+3 bleu:0.3185455882118027
+AM2 translation:SENTSTART and longer de five members deeper class risen : SENTEND
+1 bleu:0.6363636363636364
+2 bleu:0.504524979109513
+3 bleu:0.304677894412465
+AM3 translation:SENTSTART and longer de five members applies having risen : SENTEND
+1 bleu:0.7272727272727273
+2 bleu:0.6030226891555273
+3 bleu:0.43233287816535193
+processing:SENTSTART je ne crois pas que ce soit la solution du probleme . SENTEND
+ref1:SENTSTART i do not think a union is the key to solving the problem . SENTEND ref2:SENTSTART i do not think this is the solution of the problem . SENTEND
+AM0 translation:SENTSTART i cannot think not than what her gone grievances du problem . SENTEND
+1 bleu:0.5
+2 bleu:0.3396831102433787
+3 bleu:0.2126451851414951
+AM1 translation:SENTSTART i cannot believe not only what renew court solution du problem . SENTEND
+1 bleu:0.5
+2 bleu:0.3396831102433787
+3 bleu:0.2126451851414951
+AM2 translation:SENTSTART i cannot believe not arrest what reprehensible la solution du problem . SENTEND
+1 bleu:0.5
+2 bleu:0.3396831102433787
+3 bleu:0.2126451851414951
+AM3 translation:SENTSTART i wrist believe not bless unlikely admittedly la solution du problem . SENTEND
+1 bleu:0.5
+2 bleu:0.3396831102433787
+3 bleu:0.2126451851414951
+processing:SENTSTART je felicite le depute de winnipeg - centre d'avoir presente ce projet de loi . SENTEND
+ref1:SENTSTART i commend the member for winnipeg centre for bringing forward this bill . SENTEND ref2:SENTSTART i congratulate the mp for winnipeg centre have presented the bill . SENTEND
+AM0 translation:SENTSTART i congratulate the member de blaikie - centre UNK biggest what bill de act . SENTEND
+1 bleu:0.5294117647058824
+2 bleu:0.40674460840998033
+3 bleu:0.2804534469400918
+AM1 translation:SENTSTART i bolton femmes member de winnipeg - centre ``stealing introducing what project de act . SENTEND
+1 bleu:0.4117647058823529
+2 bleu:0.22687130324325752
+3 bleu:0.0
+AM2 translation:SENTSTART i commend right member de winnipeg - centre ``stealing introducing what project de law . SENTEND
+1 bleu:0.47058823529411764
+2 bleu:0.2970442628930023
+3 bleu:0.18051655059781124
+AM3 translation:SENTSTART i commend right member de winnipeg - centre accomplishment presents unlikely project de act . SENTEND
+1 bleu:0.47058823529411764
+2 bleu:0.2970442628930023
+3 bleu:0.18051655059781124
+processing:SENTSTART il faut que ca change . SENTEND
+ref1:SENTSTART something has to change . SENTEND ref2:SENTSTART it has to change . SENTEND
+AM0 translation:SENTSTART he fight than ridiculous changed . SENTEND
+1 bleu:0.375
+2 bleu:0.23145502494313785
+3 bleu:0.0
+AM1 translation:SENTSTART he restructuring only skin changed . SENTEND
+1 bleu:0.375
+2 bleu:0.23145502494313785
+3 bleu:0.0
+AM2 translation:SENTSTART he restructuring arrest skin changed . SENTEND
+1 bleu:0.375
+2 bleu:0.23145502494313785
+3 bleu:0.0
+AM3 translation:SENTSTART he restructuring bless skin changed . SENTEND
+1 bleu:0.375
+2 bleu:0.23145502494313785
+3 bleu:0.0

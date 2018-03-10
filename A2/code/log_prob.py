@@ -28,16 +28,19 @@ def log_prob(sentence, LM, smoothing=False, delta=0, vocabSize=0):
         next_word = words[i+1]
         count_curr = 0
         count_next = 0
-
+        # print(curr_word)
         if curr_word in LM["uni"].keys():
             count_curr = LM["uni"][curr_word]
             if next_word in LM["bi"][curr_word].keys():
                 count_next = LM["bi"][curr_word][next_word]
-
+                #print(count_curr)
+                #print(count_next)
         if smoothing is True:
-            bi_log_prob = log(count_next + delta/ (count_curr + (delta*vocabSize)), 2)
-        elif count_next!=0 :
+            n_d = (count_next + delta)/(count_curr + (delta * vocabSize))
+            bi_log_prob = log(n_d, 2)
+        elif smoothing is False and count_next!=0 :
             bi_log_prob = log(count_next /count_curr, 2)
+            #print(3)
 
         log_prob = log_prob + bi_log_prob
             

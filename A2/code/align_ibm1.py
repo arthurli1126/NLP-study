@@ -2,6 +2,7 @@ from lm_train import *
 from log_prob import *
 from preprocess import *
 from collections import OrderedDict,Counter
+import pickle
 from math import log
 import os
 
@@ -55,6 +56,10 @@ def align_ibm1(train_dir, num_sentences, max_iter, fn_AM="./temp_am.pickle"):
     AM = initialize(eng,fre)
     for i in range(max_iter):
         AM = em_step(AM,eng,fre)
+
+    with open(fn_AM+'.pickle', 'wb') as handle:
+        pickle.dump(AM, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
     return AM
     
 # ------------ Support functions --------------

@@ -14,6 +14,15 @@ class preprocess_testcase(unittest.TestCase):
 
     def test_leading_c_a(self):
         self.assertEqual(pre("je t'aime","f"),"je t' aime")
+
+    def test_bracket(self):
+        self.assertEqual(pre("(i don't know)", "e"), "( i don't know )")
+
+    def test_dash_in_bracket(self):
+        self.assertEqual(pre("(i-don't-know)", "e"), "( i - don't - know )")
+
+    def test_double_quot(self):
+        self.assertEqual(pre("he said ''i dont know'' ", "e"), "he said '' i dont know ''")
         
 
 

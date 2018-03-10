@@ -6,7 +6,7 @@ def ref_gram_count(refs):
     ref_g_count = {}
     for ref in refs:
         #print("processing ref:{}".format(ref))
-        words = ref.split()[1:-1]
+        words = ref.split()
         words_len = len(words)
         for i in range(len(words)):
             #print(1)
@@ -27,7 +27,7 @@ def ref_gram_count(refs):
 
 
 def can_gram_count(ref_count, candidate):
-    words = candidate.split()[1:-1]
+    words = candidate.split()
     num_can_words = len(words)
 
     unigram_count = 0
@@ -88,7 +88,7 @@ def BLEU_score(candidate, references, n):
     gram_count_ref = ref_gram_count(references)
     #skip sentstart&end since it doesn't matter in this
     bleu_score =0
-    words = candidate.split()[1:-1]
+    words = candidate.split()
     num_can_words = len(words)
 
     unigram_count, bigram_count, trigram_count = can_gram_count(gram_count_ref, candidate)
