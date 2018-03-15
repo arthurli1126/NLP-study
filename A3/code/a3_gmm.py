@@ -20,9 +20,16 @@ def log_b_m_x( m, x, myTheta, preComputedForM=[]):
         As you'll see in tutorial, for efficiency, you can precompute something for 'm' that applies to all x outside of this function.
         If you do this, you pass that precomputed component in preComputedForM
     '''
-    print('TODO')
+    x_size = len(x)
+    prec = preComputedForM[m]
+    sigma = myTheta.Sigma[m]
+    first_total = 0
+    for i in range(x_size):
+        first_part= 0.5*(x[i]**2)*(sigma[i]**(-2))
+        sec_part = myTheta.mu[m][i]*x[i]*(sigma[i]**(-2))
+        first_total += sec_part - first_part
 
-
+    return first_total-prec
     
 def log_p_m_x( m, x, myTheta):
     ''' Returns the log probability of the m^{th} component given d-dimensional vector x, and model myTheta
