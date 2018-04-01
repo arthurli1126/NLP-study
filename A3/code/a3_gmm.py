@@ -20,11 +20,11 @@ def log_b_m_x( m, x, myTheta, preComputedForM=[]):
         As you'll see in tutorial, for efficiency, you can precompute something for 'm' that applies to all x outside of this function.
         If you do this, you pass that precomputed component in preComputedForM
     '''
-    prec = preComputedForM
-    sigma = myTheta.Sigma[m]
+    prec = preComputedForM[m]
+    sigma = np.diag(myTheta.Sigma[:,:,m])
     first_total = 0
     first_part= np.sum(0.5*(x**2)*(sigma**(-1)))
-    sec_part = np.sum(myTheta.mu[m]*x*(sigma**(-1)))
+    sec_part = np.sum(myTheta.mu[:,m]*x*(sigma**(-1)))
     first_total += sec_part - first_part
     return first_total-prec
     
@@ -36,7 +36,7 @@ def log_p_m_x( m, x, myTheta):
     # sigma_m = myTheta.Sigma[m]
     m_size = len(myTheta.mu)
 
-
+    #todo use prec function
     first = np.sum(myTheta.mu ** 2) / (2 * myTheta.Sigma ** 2)
     sec = (x.shape[0] / 2) * np.log(2 * np.pi)
     third = 0.5 * np.log(np.prod(myTheta.Sigma))
@@ -54,11 +54,15 @@ def log_p_m_x( m, x, myTheta):
 def pre_com(myTheta):
 
     d = myTheta.Sigma.shape[0]
-
-    first = np.sum(np.linalg.solve((2 * myTheta.Sigma),myTheta.mu.transpose().dot(myTheta.mu)))
+    M = myTheta.omega.shape[1]
     sec = (d / 2) * np.log(2 * np.pi)
-    third = 0.5 * np.log(np.prod(myTheta.Sigma))
-    return first + sec + third
+    first = []
+    for m in range(M):
+        cov = np.diag(myTheta.Sigma[:,:,m])
+        u_over_sig = np.sum((myTheta.mu[m]*myTheta.mu[m])/(2 * cov))
+        third = 0.5 * np.log(np.prod(cov))
+        first.append(u_over_sig+sec+third)
+    return first
 
 
 def logLik( log_Bs, myTheta ):
@@ -89,11 +93,12 @@ def train( speaker, X, M=8, epsilon=0.0, maxIter=20 ):
 
     #initialization
     myTheta.omega = np.zeros([1,M]) + 1/M
-    myTheta.mu = X[random.randint(1,T)]
+    myTheta.mu =np.zeros([M,D])
     myTheta.Sigma = np.zeros([D,D,M])
 
     for i in range(M):
         myTheta.Sigma[:,:,i] = np.identity(D)
+        myTheta.mu[i] = X[random.randint(1, T)]
 
     #train
     prev_ll = float("inf")
