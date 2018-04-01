@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import os, fnmatch
 import random
+from scipy.misc import logsumexp
 
 #dataDir = '/u/cs401/A3/data/'
 dataDir = '../data/'
@@ -24,7 +25,7 @@ def log_b_m_x( m, x, myTheta, preComputedForM=[]):
     sigma = np.diag(myTheta.Sigma[:,:,m])
     first_total = 0
     first_part= np.sum(0.5*(x**2)*(sigma**(-1)))
-    sec_part = np.sum(myTheta.mu[:,m]*x*(sigma**(-1)))
+    sec_part = np.sum(myTheta.mu[m]*x*(sigma**(-1)))
     first_total += sec_part - first_part
     return first_total-prec
     
@@ -32,22 +33,20 @@ def log_p_m_x( m, x, myTheta):
     ''' Returns the log probability of the m^{th} component given d-dimensional vector x, and model myTheta
         See equation 2 of handout
     '''
-    omega_m_part = myTheta.omega[m]
+    omega_m_part = myTheta.omega[:,m]
     # sigma_m = myTheta.Sigma[m]
     m_size = len(myTheta.mu)
 
     #todo use prec function
-    first = np.sum(myTheta.mu ** 2) / (2 * myTheta.Sigma ** 2)
-    sec = (x.shape[0] / 2) * np.log(2 * np.pi)
-    third = 0.5 * np.log(np.prod(myTheta.Sigma))
-    pre_c_m = first + sec + third
+    pre_c_m = pre_com(myTheta)
 
     log_omega_m = np.log(omega_m_part)
-    log_bm = np.log(log_b_m_x(m,x,myTheta,pre_c_m[m]))
+    log_bm = log_b_m_x(m,x,myTheta,pre_c_m)
     #sum_log_mu = np.sum(np.log(myTheta.mu))
 
-    b = np.array([ log_b_m_x(i,x,myTheta, pre_c_m[i]) for i in range(m_size)])
-    log_sum_b_omega = np.log(np.sum(myTheta.omega*b))
+    b = np.array([ log_b_m_x(i,x,myTheta, pre_c_m) for i in range(m_size)])
+    #to use logsumexp
+    log_sum_b_omega = logsumexp(np.log(myTheta.omega) + b)
 
     return log_omega_m + log_bm - log_sum_b_omega
 
@@ -77,8 +76,10 @@ def logLik( log_Bs, myTheta ):
 
         See equation 3 of the handout
     '''
-    omega_bs = myTheta.omega.transpose().dot(log_Bs)
-    return np.sum(np.log(np.sum(omega_bs, axis=1)))
+    T= log_Bs.shape[1]
+    part1 = np.log(np.tile(myTheta.omega.reshape(-1,1),(1,T)))
+    part2 =log_Bs
+    return logsumexp(part1 + part2 )
 
 
 
@@ -109,8 +110,10 @@ def train( speaker, X, M=8, epsilon=0.0, maxIter=20 ):
         pre_c = pre_com(myTheta)
         for m in range(M):
             for t in range(T):
+                print("m: {}, t: {}".format(m,t))
                 mat_1[m][t] = log_b_m_x(m,X[t],myTheta,pre_c)
                 mat_2[m][t] = log_p_m_x(m,X[t],myTheta)
+        print("testing")
         ll = logLik(mat_1,myTheta)
         myTheta = update_param(myTheta,X,mat_2)
         imp = ll-prev_ll
@@ -161,9 +164,10 @@ if __name__ == "__main__":
     trainThetas = []
     testMFCCs = []
     print('TODO: you will need to modify this main block for Sec 2.3')
+    #todo: change paramter for test
     d = 13
-    k = 5  # number of top speakers to display, <= 0 if none
-    M = 8
+    k = 4  # number of top speakers to display, <= 0 if none
+    M = 2
     epsilon = 0.0
     maxIter = 20
     # train a model for each speaker, and reserve data for testing
