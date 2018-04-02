@@ -102,7 +102,7 @@ def train( speaker, X, M=8, epsilon=0.0, maxIter=20 ):
         myTheta.mu[i] = X[random.randint(1, T)]
 
     #train
-    prev_ll = float("inf")
+    prev_ll = float("-inf")
     imp = epsilon
 
     curr_i = 0
@@ -110,13 +110,15 @@ def train( speaker, X, M=8, epsilon=0.0, maxIter=20 ):
         pre_c = pre_com(myTheta)
         for m in range(M):
             for t in range(T):
-                print("m: {}, t: {}".format(m,t))
+                #print("m: {}, t: {}".format(m,t))
                 mat_1[m][t] = log_b_m_x(m,X[t],myTheta,pre_c)
                 mat_2[m][t] = log_p_m_x(m,X[t],myTheta)
         print("testing")
         ll = logLik(mat_1,myTheta)
-        myTheta = update_param(myTheta,X,mat_2)
+        print("ll:{}".format(ll))
+        myTheta = update_param(myTheta,X,mat_2,M)
         imp = ll-prev_ll
+        print(imp)
         prev_ll = ll
         curr_i+=1
 
@@ -127,18 +129,25 @@ def update_param(theta, X, p_m_x, M):
     T = X.shape[0]
     D = X.shape[1]
 
+    print(p_m_x)
     #omega
-    p_sum = np.sum(p_m_x, axis=0)
-    theta.omega = p_sum /T
+    p_sum = np.sum(p_m_x, axis=1)
+    theta.omega = (p_sum /T).reshape(1,M)
     #mu
-    theta.mu = np.linalg.solve(p_sum,np.sum(p_m_x.dot(X)))
-
+    p_sum_rep = np.tile(p_sum,(D,1))
+    X_com_conj_trans = X.conj().transpose()
+    theta.mu = ((X_com_conj_trans.dot(p_m_x.conj().transpose())) / p_sum_rep)
     #variance
-    mu_sq = (theta.mu)**2
-    var = np.linalg.solve(p_sum,np.sum(p_m_x.dot(X.dot(X)))) - mu_sq
+    mu_sq = theta.mu*theta.mu
+    X_sq_con_trans = (X*X).conj().transpose()
+    sum_p_x_sq = X_sq_con_trans.dot(p_m_x.conj().transpose())
+    var = (sum_p_x_sq / p_sum_rep) - mu_sq
+
+    theta.mu = theta.mu.conj().transpose()
 
     for m in range(M):
         theta.Sigma[:,:,m] = np.diag(var[:,m])
+
     return theta
 
 def test( mfcc, correctID, models, k=5 ):
@@ -167,7 +176,7 @@ if __name__ == "__main__":
     #todo: change paramter for test
     d = 13
     k = 4  # number of top speakers to display, <= 0 if none
-    M = 2
+    M = 8
     epsilon = 0.0
     maxIter = 20
     # train a model for each speaker, and reserve data for testing
@@ -185,7 +194,7 @@ if __name__ == "__main__":
             for file in files:
                 myMFCC = np.load( os.path.join( dataDir, speaker, file ) )
                 X = np.append( X, myMFCC, axis=0)
-
+            #todo needed for test
             trainThetas.append( train(speaker, X, M, epsilon, maxIter) )
 
     # evaluate 
