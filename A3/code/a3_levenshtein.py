@@ -1,7 +1,9 @@
 import os
 import numpy as np
+import fnmatch
 
-dataDir = '/u/cs401/A3/data/'
+#dataDir = '/u/cs401/A3/data/'
+dataDir = '../data/'
 
 def Levenshtein(r, h):
     """                                                                         
@@ -30,5 +32,12 @@ def Levenshtein(r, h):
     """
 
 
+
 if __name__ == "__main__":
-    print( 'TODO' ) 
+    asr_output = open("asrDiscussion.txt","a")
+
+    for subdir, dirs, files in os.walk(dataDir):
+        for speaker in dirs:
+            print(speaker)
+            speaker_path = os.path.join(dataDir, speaker)
+            files = fnmatch.filter(os.listdir(), '*txt')

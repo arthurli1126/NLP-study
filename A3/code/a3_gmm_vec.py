@@ -28,7 +28,6 @@ def log_b_m_x(M, X, myTheta):
         cov_m = np.diag(myTheta.Sigma[:,:,m])
         cov_m_rep = np.tile(cov_m.transpose(), (T,1))
         log_b[:,m] = logPdf(X, mu_m_rep, cov_m_rep)
-
     return log_b
 
 
@@ -39,6 +38,7 @@ def logPdf(X, mu, cov):
     part2 = (x_m_mu * x_m_mu) / cov
     log_b_t = -0.5 * (part2 + np.log(2*np.pi*cov))
     log_b = np.sum(log_b_t, axis=1)
+
     return log_b
 
 
@@ -62,12 +62,12 @@ def logLik(X, myTheta, M):
 
     log_omega_rep = np.tile(np.log(myTheta.omega), (T,1))
     L = log_bs+log_omega_rep
-    L = logsumexp(L)
-
-    last  = logsumexp(log_bs + log_omega_rep, axis=1)
+    last = logsumexp(log_bs + log_omega_rep, axis=1)
+    #test = logsumexp(log_bs + log_omega_rep, axis=0)
+    L = np.sum(last)
     last = last.reshape(-1,1)
+    #test = test.reshape(1, -1)
     log_p_m_x = log_omega_rep + log_bs - np.tile(last, (1,M))
-
     return L, log_p_m_x
 
 
@@ -84,20 +84,21 @@ def train(speaker, X, M=8, epsilon=0.0, maxIter=20):
 
     for i in range(M):
         myTheta.Sigma[:, :, i] = np.identity(D)
-        myTheta.mu[:,i] = X[random.randint(1, T)]
+        myTheta.mu[:,i] = X[random.randint(0, T-1)]
 
     # train
     prev_ll = float("-inf")
-    imp = epsilon
+    imp = float("inf")
 
+    epsilon = epsilon
     curr_i = 0
-    while curr_i < maxIter and imp >= epsilon:
+    while curr_i < maxIter and imp > epsilon:
         L,pmx = logLik(X,myTheta,M)
-        print("ll:{}".format(L))
+        #print("ll:{}".format(L))
 
         myTheta = update_param(myTheta, X, pmx, M)
         imp = L - prev_ll
-        print("imp : {}".format(imp))
+        #print("iter {}，imp : {}".format(curr_i,imp))
         prev_ll = L
         curr_i += 1
 
@@ -145,11 +146,11 @@ def test(mfcc, correctID, models, k=5):
     bestModel = -1
     M = models[0].mu.shape[1]
     lls = []
-    print(M)
-    for m in range(M):
-        L, p_m_x = logLik(mfcc,models[m],M)
+    #print(M)
+    for i in range(len(models)):
+        L, p_m_x = logLik(mfcc,models[i],M)
         lls.append(L)
-    print(lls)
+    #print(lls)
     lls = np.array(lls)
 
     top_k_index = np.argsort(lls)[-k:]
@@ -157,6 +158,7 @@ def test(mfcc, correctID, models, k=5):
     for i in top_k_index:
         print("{} {}".format(models[i].name,lls[i]))
     bestModel = top_k_index[-1]
+    print("\n")
     return 1 if (bestModel == correctID) else 0
 
 
@@ -164,13 +166,12 @@ if __name__ == "__main__":
 
     trainThetas = []
     testMFCCs = []
-    print('TODO: you will need to modify this main block for Sec 2.3')
     # todo: change paramter for test
     d = 13
     k = 5  # number of top speakers to display, <= 0 if none
     M = 8
     epsilon = 0.0
-    maxIter = 20
+    maxIter = 8
     # train a model for each speaker, and reserve data for testing
     for subdir, dirs, files in os.walk(dataDir):
         for speaker in dirs:
