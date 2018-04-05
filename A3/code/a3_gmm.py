@@ -79,7 +79,7 @@ def logLik( log_Bs, myTheta ):
     T= log_Bs.shape[1]
     part1 = np.log(np.tile(myTheta.omega.reshape(-1,1),(1,T)))
     part2 =log_Bs
-    return logsumexp(part1 + part2 )
+    return np.sum(logsumexp(part1 + part2,axis=1))
 
 
 
@@ -129,7 +129,7 @@ def update_param(theta, X, p_m_x, M):
     T = X.shape[0]
     D = X.shape[1]
 
-    print(p_m_x)
+    #print(p_m_x)
     #omega
     p_sum = np.sum(p_m_x, axis=1)
     theta.omega = (p_sum /T).reshape(1,M)
@@ -163,8 +163,21 @@ def test( mfcc, correctID, models, k=5 ):
                S-5A -9.21034037197
         the format of the log likelihood (number of decimal places, or exponent) does not matter
     '''
-    bestModel = -1
-    print ('TODO')
+    M = models[0].mu.shape[1]
+    lls = []
+    # print(M)
+    for i in range(len(models)):
+        L, p_m_x = logLik(mfcc, models[i], M)
+        lls.append(L)
+    # print(lls)
+    lls = np.array(lls)
+
+    top_k_index = np.argsort(lls)[-k:]
+    print(models[correctID].name)
+    for i in top_k_index:
+        print("{} {}".format(models[i].name, lls[i]))
+    bestModel = top_k_index[-1]
+    print("\n")
     return 1 if (bestModel == correctID) else 0
 
 
@@ -177,7 +190,7 @@ if __name__ == "__main__":
     d = 13
     k = 4  # number of top speakers to display, <= 0 if none
     M = 8
-    epsilon = 0.0
+    epsilon = 1000
     maxIter = 20
     # train a model for each speaker, and reserve data for testing
     for subdir, dirs, files in os.walk(dataDir):

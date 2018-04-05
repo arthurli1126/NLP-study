@@ -3,8 +3,10 @@ import numpy as np
 import os, fnmatch
 import random
 from scipy.misc import logsumexp
+import argparse
 
-# dataDir = '/u/cs401/A3/data/'
+
+#dataDir = '/u/cs401/A3/data/'
 dataDir = '../data/'
 
 
@@ -14,6 +16,41 @@ class theta:
         self.omega = np.zeros((M, 1))
         self.mu = np.zeros((M, d))
         self.Sigma = np.zeros((M, d))
+
+
+def pre_com(myTheta):
+
+    d = myTheta.Sigma.shape[0]
+    M = myTheta.omega.shape[1]
+    sec = (d / 2) * np.log(2 * np.pi)
+    first = []
+    for m in range(M):
+        cov = np.diag(myTheta.Sigma[:,:,m])
+        u_over_sig = np.sum((myTheta.mu[m]*myTheta.mu[m])/(2 * cov))
+        third = 0.5 * np.log(np.prod(cov))
+        first.append(u_over_sig+sec+third)
+    return first
+
+def log_p_m_x( m, x, myTheta):
+    ''' Returns the log probability of the m^{th} component given d-dimensional vector x, and model myTheta
+        See equation 2 of handout
+    '''
+    omega_m_part = myTheta.omega[:,m]
+    # sigma_m = myTheta.Sigma[m]
+    m_size = len(myTheta.mu)
+
+    #todo use prec function
+    pre_c_m = pre_com(myTheta)
+
+    log_omega_m = np.log(omega_m_part)
+    log_bm = log_b_m_x(m,x,myTheta,pre_c_m)
+    #sum_log_mu = np.sum(np.log(myTheta.mu))
+
+    b = np.array([ log_b_m_x(i,x,myTheta, pre_c_m) for i in range(m_size)])
+    #to use logsumexp
+    log_sum_b_omega = logsumexp(np.log(myTheta.omega) + b)
+
+    return log_omega_m + log_bm - log_sum_b_omega
 
 
 def log_b_m_x(M, X, myTheta):
@@ -94,11 +131,11 @@ def train(speaker, X, M=8, epsilon=0.0, maxIter=20):
     curr_i = 0
     while curr_i < maxIter and imp > epsilon:
         L,pmx = logLik(X,myTheta,M)
-        #print("ll:{}".format(L))
+        print("ll:{}".format(L))
 
         myTheta = update_param(myTheta, X, pmx, M)
         imp = L - prev_ll
-        #print("iter {}，imp : {}".format(curr_i,imp))
+        print("iter {}，imp : {}".format(curr_i,imp))
         prev_ll = L
         curr_i += 1
 
@@ -164,14 +201,25 @@ def test(mfcc, correctID, models, k=5):
 
 if __name__ == "__main__":
 
+    parser = argparse.ArgumentParser(description='paramters .')
+
+    parser.add_argument("-m", "--M", help="size of M", required=True)
+    parser.add_argument("-i", "--i", help="size of iter", required=True)
+    args = parser.parse_args()
+
+
+
     trainThetas = []
     testMFCCs = []
     # todo: change paramter for test
     d = 13
     k = 5  # number of top speakers to display, <= 0 if none
-    M = 8
-    epsilon = 0.0
-    maxIter = 8
+    #M = 8
+    M = int(args.M)
+    maxIter = int(args.i)
+    epsilon = 10000
+
+    #maxIter = 8
     # train a model for each speaker, and reserve data for testing
     for subdir, dirs, files in os.walk(dataDir):
         for speaker in dirs:

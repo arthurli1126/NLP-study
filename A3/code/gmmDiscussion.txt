@@ -1,0 +1,60 @@
+Experiments with M:
+
+1.Try with Different M at epsilon = 0 max_iter = 20:
+
+M=8:1
+M=7:0.96875
+M=6:1
+M=5:0.9375
+M=4:0.9375
+
+Accuracy increases with M increases. However, at M=7 we see some decreases, this might be caused by initialization step. Because we initialize gaussian mean with the random vector from train data, this might caused my model stuck at the local maxima.
+
+
+2.Try with Different max_iter with M=8, epsilon =0:
+
+max_iter=1:1
+max_iter=5:1
+max_iter=10:1
+max_iter=15:0.9375
+max_iter=20:1
+
+It seems the max_iter doesn't have significant effects on the model, except when max_iter increase  to over 15 the accuracy dropped but when increase it to 20 the accuracy increased again.
+
+
+3.Try with Different epsilon with M=8, max_iter = 20:
+
+Epsilon =10:1
+Epsilon =100:1
+Epsilon =1000:0.96875
+Epsilon =10000:1
+
+It seems accuracy is high with small epsilon, that might because large epsilon will result in the model exit the training process before it fully converged.
+
+4.Try with Different number of speaks
+
+Speakers=32 : 1
+Speakers = 20 : 0.625
+Speakers=10 : 0.3125
+Speakers = 5 : 0.15625
+
+It seems accuracy increases with number of speakers, as it is expected. Because if the speaker for test data is not included in the classifier, the classification result will guaranteed to be wrong.
+
+
+
+1.How might you improve the classification accuracy of the Gaussian mixtures, without adding more training data?
+
+
+One way to improve the classification accuracy is try to initialize gaussian parameters several times to avoid the model converge to local maxima.
+Also, due to the assumption of gmm, we assume there is no dependency among features, but in this task, there might be. So if we can implement some depended feature relationship that may also help the model achieve better performance.
+In addition, we can adjust these hyper-parameter such as m, maxiter to achieve the best performance given current model and data.
+
+
+2.When would your classifier decide that a given test utterance comes from none of the trained speaker models, and how would your classifier come to this decision?
+
+We can set a threshold value for gmm classifiers, specifically is the most promising gmm with highest log likelihood still can not reach the threshold, the classifier can decide the test utterance is not from any trained speaker models. Also, if there are multiple gmm model that generate very similar log likelihood, which means that there are multiple models that are close to the test utterance and if we simply choose the best log likelihood which is not very different from other model statistically.
+
+
+3.Can you think of some alternative methods for doing speaker identification that don’t use Gaussian mixtures?
+
+I think we can also try LSTM to do the speaker identification instead of gaussian mixture model. There are two advantages that LSTM has over Gaussian mixtures model. First, it’s a special kind of neural network, so it can utilize neural network’s universal approximation ability. Also, the ability of taking past events as consideration when make next prediction enable LSTM capture dependency among the features so I believe LSTM can achieve better performance.
